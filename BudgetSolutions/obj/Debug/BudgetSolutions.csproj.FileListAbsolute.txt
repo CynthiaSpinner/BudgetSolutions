@@ -1,0 +1,11 @@
+C:\Users\cynth\Desktop\Repos\BudgetSolutions\BudgetSolutions\bin\Debug\BudgetSolutions.exe.config
+C:\Users\cynth\Desktop\Repos\BudgetSolutions\BudgetSolutions\bin\Debug\BudgetSolutions.exe
+C:\Users\cynth\Desktop\Repos\BudgetSolutions\BudgetSolutions\bin\Debug\BudgetSolutions.pdb
+C:\Users\cynth\Desktop\Repos\BudgetSolutions\BudgetSolutions\obj\Debug\BudgetSolutions.csproj.AssemblyReference.cache
+C:\Users\cynth\Desktop\Repos\BudgetSolutions\BudgetSolutions\obj\Debug\BudgetSolutions.Form1.resources
+C:\Users\cynth\Desktop\Repos\BudgetSolutions\BudgetSolutions\obj\Debug\BudgetSolutions.Properties.Resources.resources
+C:\Users\cynth\Desktop\Repos\BudgetSolutions\BudgetSolutions\obj\Debug\BudgetSolutions.csproj.GenerateResource.cache
+C:\Users\cynth\Desktop\Repos\BudgetSolutions\BudgetSolutions\obj\Debug\BudgetSolutions.csproj.CoreCompileInputs.cache
+C:\Users\cynth\Desktop\Repos\BudgetSolutions\BudgetSolutions\obj\Debug\BudgetSolutions.exe
+C:\Users\cynth\Desktop\Repos\BudgetSolutions\BudgetSolutions\obj\Debug\BudgetSolutions.pdb
+C:\Users\cynth\Desktop\Repos\BudgetSolutions\BudgetSolutions\obj\Debug\BudgetSolutions.RegisterForm.resources
