@@ -99,7 +99,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\icons8-money-bag-48.png" />
     <Content Include="Assets\icons8-money-bag-96.png" />
+    <None Include="Resources\icons8-money-bag-48.png" />
     <None Include="Resources\icons8-money-bag-96.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
