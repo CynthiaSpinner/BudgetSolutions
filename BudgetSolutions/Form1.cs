@@ -61,7 +61,11 @@ namespace BudgetSolutions
 
                     if (table.Rows.Count > 0)
                     {
-                        MessageBox.Show("Login successful!", "Response", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        
+                        MainForm mainForm = new MainForm();
+                        mainForm.Show();
+
+                        this.Hide();
                     }
                     else
                     {

@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace BudgetSolutions
 {
-    public partial class MainForm : Form
+    public partial class CatagoryForm : UserControl
     {
-        public MainForm()
+        public CatagoryForm()
         {
             InitializeComponent();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
     }
 }

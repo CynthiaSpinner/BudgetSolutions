@@ -10,3 +10,5 @@ C:\Users\cynth\Desktop\Repos\BudgetSolutions\BudgetSolutions\obj\Debug\BudgetSol
 C:\Users\cynth\Desktop\Repos\BudgetSolutions\BudgetSolutions\obj\Debug\BudgetSolutions.pdb
 C:\Users\cynth\Desktop\Repos\BudgetSolutions\BudgetSolutions\obj\Debug\BudgetSolutions.RegisterForm.resources
 C:\Users\cynth\Desktop\Repos\BudgetSolutions\BudgetSolutions\obj\Debug\BudgetSolutions.MainForm.resources
+C:\Users\cynth\Desktop\Repos\BudgetSolutions\BudgetSolutions\obj\Debug\BudgetSolutions.CatagoryForm.resources
+C:\Users\cynth\Desktop\Repos\BudgetSolutions\BudgetSolutions\obj\Debug\BudgetSolutions.DashboardForm.resources
