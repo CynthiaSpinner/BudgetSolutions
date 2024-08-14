@@ -17,9 +17,27 @@ namespace BudgetSolutions
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        
+
+        private void label1_Click_1(object sender, EventArgs e)
         {
-            Application.Exit();
+            if (MessageBox.Show("You sure you want to close the application?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                 == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void logout_btn_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("You sure you want to log out?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) 
+                == DialogResult.Yes)
+            {
+                Form1 loginForm = new Form1();
+                loginForm.Show();
+
+                this.Hide();
+            }
         }
     }
 }

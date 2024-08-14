@@ -6,3 +6,18 @@
 )
 
 SELECT * FROM users
+
+CREATE TABLE expenses(
+	id INT PRIMARY KEY IDENTITY(1,1),
+	type VARCHAR(MAX) NULL,
+	name VARCHAR(MAX) NULL,
+	date DATE NULL,
+	amount DECIMAL(38,2) NULL,
+	grace VARCHAR(MAX) NULL,
+	lateFee DECIMAL(38,2) NULL,
+	passed VARCHAR(MAX) NULL,
+	passedAmount DECIMAL(38,2) NULL,
+	creditIssue VARCHAR(MAX) NULL
+)
+
+SELECT * FROM expenses
