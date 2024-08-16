@@ -86,7 +86,7 @@
             this.category_panel.Controls.Add(this.category_typeLabel);
             this.category_panel.Controls.Add(this.label1);
             this.category_panel.Location = new System.Drawing.Point(37, 35);
-            this.category_panel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.category_panel.Margin = new System.Windows.Forms.Padding(6);
             this.category_panel.Name = "category_panel";
             this.category_panel.Size = new System.Drawing.Size(559, 1134);
             this.category_panel.TabIndex = 0;
@@ -99,11 +99,11 @@
             this.category_30late.FormattingEnabled = true;
             this.category_30late.Items.AddRange(new object[] {
             "No",
-            "30 days or more?",
-            "60 days or more?",
-            "90 days or more?"});
+            "30 days+",
+            "60 days+",
+            "90 days+"});
             this.category_30late.Location = new System.Drawing.Point(55, 899);
-            this.category_30late.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.category_30late.Margin = new System.Windows.Forms.Padding(4);
             this.category_30late.Name = "category_30late";
             this.category_30late.Size = new System.Drawing.Size(444, 38);
             this.category_30late.TabIndex = 25;
@@ -128,7 +128,7 @@
             this.category_howmuch.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.category_howmuch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(124)))), ((int)(((byte)(128)))));
             this.category_howmuch.Location = new System.Drawing.Point(55, 807);
-            this.category_howmuch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.category_howmuch.Margin = new System.Windows.Forms.Padding(4);
             this.category_howmuch.Name = "category_howmuch";
             this.category_howmuch.Size = new System.Drawing.Size(444, 40);
             this.category_howmuch.TabIndex = 23;
@@ -144,7 +144,7 @@
             "Yes",
             "No"});
             this.category_passeddue.Location = new System.Drawing.Point(55, 716);
-            this.category_passeddue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.category_passeddue.Margin = new System.Windows.Forms.Padding(4);
             this.category_passeddue.Name = "category_passeddue";
             this.category_passeddue.Size = new System.Drawing.Size(444, 38);
             this.category_passeddue.TabIndex = 22;
@@ -157,7 +157,7 @@
             this.category_latefee.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.category_latefee.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(124)))), ((int)(((byte)(128)))));
             this.category_latefee.Location = new System.Drawing.Point(55, 624);
-            this.category_latefee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.category_latefee.Margin = new System.Windows.Forms.Padding(4);
             this.category_latefee.Name = "category_latefee";
             this.category_latefee.Size = new System.Drawing.Size(444, 40);
             this.category_latefee.TabIndex = 21;
@@ -187,7 +187,7 @@
             "14 days",
             "15 days"});
             this.category_grace.Location = new System.Drawing.Point(55, 528);
-            this.category_grace.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.category_grace.Margin = new System.Windows.Forms.Padding(4);
             this.category_grace.Name = "category_grace";
             this.category_grace.Size = new System.Drawing.Size(444, 38);
             this.category_grace.TabIndex = 20;
@@ -199,7 +199,7 @@
             this.category_amount.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.category_amount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(124)))), ((int)(((byte)(128)))));
             this.category_amount.Location = new System.Drawing.Point(55, 432);
-            this.category_amount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.category_amount.Margin = new System.Windows.Forms.Padding(4);
             this.category_amount.Name = "category_amount";
             this.category_amount.Size = new System.Drawing.Size(444, 40);
             this.category_amount.TabIndex = 19;
@@ -216,7 +216,7 @@
             this.category_datepicker.Checked = false;
             this.category_datepicker.Font = new System.Drawing.Font("Mongolian Baiti", 11.14286F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.category_datepicker.Location = new System.Drawing.Point(55, 338);
-            this.category_datepicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.category_datepicker.Margin = new System.Windows.Forms.Padding(4);
             this.category_datepicker.Name = "category_datepicker";
             this.category_datepicker.Size = new System.Drawing.Size(444, 37);
             this.category_datepicker.TabIndex = 18;
@@ -228,7 +228,7 @@
             this.category_name.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.category_name.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(124)))), ((int)(((byte)(128)))));
             this.category_name.Location = new System.Drawing.Point(55, 244);
-            this.category_name.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.category_name.Margin = new System.Windows.Forms.Padding(4);
             this.category_name.Name = "category_name";
             this.category_name.Size = new System.Drawing.Size(444, 40);
             this.category_name.TabIndex = 17;
@@ -353,7 +353,7 @@
             "Weekly Gas",
             "Other Expense"});
             this.category_type2.Location = new System.Drawing.Point(55, 153);
-            this.category_type2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.category_type2.Margin = new System.Windows.Forms.Padding(4);
             this.category_type2.Name = "category_type2";
             this.category_type2.Size = new System.Drawing.Size(444, 38);
             this.category_type2.TabIndex = 9;
@@ -381,7 +381,7 @@
             "Wic",
             "Other"});
             this.category_type.Location = new System.Drawing.Point(55, 153);
-            this.category_type.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.category_type.Margin = new System.Windows.Forms.Padding(6);
             this.category_type.Name = "category_type";
             this.category_type.Size = new System.Drawing.Size(444, 38);
             this.category_type.TabIndex = 8;
@@ -397,7 +397,7 @@
             "Income",
             "Expense"});
             this.category_category.Location = new System.Drawing.Point(55, 63);
-            this.category_category.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.category_category.Margin = new System.Windows.Forms.Padding(6);
             this.category_category.Name = "category_category";
             this.category_category.Size = new System.Drawing.Size(444, 38);
             this.category_category.TabIndex = 7;
@@ -409,7 +409,7 @@
             this.category_clear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.category_clear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(239)))), ((int)(((byte)(243)))));
             this.category_clear.Location = new System.Drawing.Point(104, 977);
-            this.category_clear.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.category_clear.Margin = new System.Windows.Forms.Padding(6);
             this.category_clear.Name = "category_clear";
             this.category_clear.Size = new System.Drawing.Size(345, 63);
             this.category_clear.TabIndex = 5;
@@ -422,7 +422,7 @@
             this.category_addUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.category_addUpdate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(239)))), ((int)(((byte)(243)))));
             this.category_addUpdate.Location = new System.Drawing.Point(104, 1050);
-            this.category_addUpdate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.category_addUpdate.Margin = new System.Windows.Forms.Padding(6);
             this.category_addUpdate.Name = "category_addUpdate";
             this.category_addUpdate.Size = new System.Drawing.Size(345, 61);
             this.category_addUpdate.TabIndex = 3;
@@ -461,7 +461,7 @@
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Location = new System.Drawing.Point(631, 35);
-            this.panel2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.panel2.Margin = new System.Windows.Forms.Padding(6);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1419, 1134);
             this.panel2.TabIndex = 1;
@@ -482,7 +482,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(124)))), ((int)(((byte)(128)))));
             this.panel3.Location = new System.Drawing.Point(50, 137);
-            this.panel3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.panel3.Margin = new System.Windows.Forms.Padding(6);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1320, 949);
             this.panel3.TabIndex = 0;
@@ -494,7 +494,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(239)))), ((int)(((byte)(243)))));
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.category_panel);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "CatagoryForm";
             this.Size = new System.Drawing.Size(2081, 1213);
             this.category_panel.ResumeLayout(false);
