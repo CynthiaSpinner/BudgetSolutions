@@ -21,3 +21,13 @@ CREATE TABLE expenses(
 )
 
 SELECT * FROM expenses
+
+CREATE TABLE income(
+	id INT PRIMARY KEY IDENTITY(1,1),
+	type VARCHAR(MAX) NULL,
+	name VARCHAR(MAX) NULL,
+	date DATE NULL,
+	amount DECIMAL(38,2) NULL,
+)
+
+SELECT * FROM income

@@ -47,11 +47,18 @@ namespace BudgetSolutions
                 category_30late.Visible = false;
 
             }
-            else
+            else if (category_category.SelectedIndex == 1)
             {
                 category_typeLabel.Visible = true;
                 category_type2.Visible = true;
                 category_type.Visible = false;
+                category_depositLabel.Visible = false;
+                category_datepicker.Visible=false;
+                category_duedatelabel.Visible=false;
+                category_amountlabel.Visible=false;
+                category_amount.Visible = false;   
+                category_namelabel.Visible = false;
+                category_name.Visible = false;
             }
         }
 
@@ -60,9 +67,20 @@ namespace BudgetSolutions
             decimal userInputAmount;
             decimal userInputLate;
             decimal userInputDue;
+           
 
 
-            if (category_category.SelectedIndex < 0 || category_type2.SelectedIndex < 0 || category_name.Text == "" || category_amount.Text == "" || category_datepicker.Checked == false || category_grace.SelectedIndex < 0 || category_latefee.Text == "" || category_passeddue.SelectedIndex < 0)
+            if (category_category.SelectedIndex < 0 && category_type2.SelectedIndex < 0 || category_category.SelectedIndex < 0 && category_name.Text == "" ||
+                category_category.SelectedIndex < 0 && category_amount.Text == "" || category_category.SelectedIndex < 0 && category_datepicker.Checked == false ||
+                category_category.SelectedIndex < 0 && category_grace.SelectedIndex < 0 || category_category.SelectedIndex < 0 && category_latefee.Text == "" ||
+                category_category.SelectedIndex < 0 && category_passeddue.SelectedIndex < 0)
+            {
+                MessageBox.Show("Please fill out all fields", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (category_category.SelectedIndex == 1 && category_type2.SelectedIndex < 0 || category_category.SelectedIndex == 1 && category_name.Text == "" ||
+                category_category.SelectedIndex == 1 && category_amount.Text == "" || category_category.SelectedIndex == 1 && category_datepicker.Checked == false ||
+                category_category.SelectedIndex == 1 && category_grace.SelectedIndex < 0 || category_category.SelectedIndex == 1 && category_latefee.Text == "" ||
+                category_category.SelectedIndex == 1 && category_passeddue.SelectedIndex < 0)
             {
                 MessageBox.Show("Please fill out all fields", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -70,18 +88,61 @@ namespace BudgetSolutions
             {
                 MessageBox.Show("Please fill out all fields", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (!decimal.TryParse(category_amount.Text, out userInputAmount))
+            else if (category_category.SelectedIndex == 0 && category_type.SelectedIndex < 0 || category_category.SelectedIndex == 0 && category_name.Text == "" ||
+                category_category.SelectedIndex == 0 && category_datepicker.Checked == false || category_category.SelectedIndex == 0 && category_amount.Text == "")
             {
-                MessageBox.Show("Please enter amount in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please fill out all fields", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if(!decimal.TryParse(category_latefee.Text, out userInputLate))
+  
+            if(category_category.SelectedIndex == 0)
             {
-                MessageBox.Show("Please enter amount in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (SqlConnection conn  = new SqlConnection(stringConnection))
+                {
+                    decimal userIncomeInput;
+                    if (!decimal.TryParse(category_amount.Text, out userIncomeInput))
+                    {
+                        MessageBox.Show("Please enter amount in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        conn.Open();
+                        string insertIncomeData = "INSERT INTO income (type, name, date, amount)" +
+                            "VALUES(@category_type, @category_name, @category_datepicker, @category_amount)";
+
+                        using (SqlCommand cmd = new SqlCommand(insertIncomeData, conn))
+                        {
+
+                            cmd.Parameters.AddWithValue("@category_type", category_type.SelectedItem);
+                            cmd.Parameters.AddWithValue("@category_name", category_name.Text.Trim());
+                            cmd.Parameters.AddWithValue("@category_datepicker", category_datepicker.Value.Date);
+                            cmd.Parameters.AddWithValue("@category_amount", userIncomeInput);
+
+                            cmd.ExecuteNonQuery();
+
+                            MessageBox.Show("Income added successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            conn.Close();
+                        }
+                    }
+                }
             }
-            
-            else
+
+            if (category_category.SelectedIndex == 1)
             {
-                if (MessageBox.Show("Are your sure you want to add this item?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                if (!decimal.TryParse(category_amount.Text, out userInputAmount))
+                {
+                    MessageBox.Show("Please enter amount in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                else if (!decimal.TryParse(category_latefee.Text, out userInputLate))
+                {
+                    MessageBox.Show("Please enter amount in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (!decimal.TryParse(category_howmuch.Text, out userInputDue))
+                {
+                    MessageBox.Show("Please enter amount in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if(MessageBox.Show("Are you sure you want to add this item?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                      == DialogResult.Yes)
                 {
                     if (category_passeddue.SelectedIndex == 0)
@@ -89,7 +150,7 @@ namespace BudgetSolutions
                         using (SqlConnection conn = new SqlConnection(stringConnection))
                         {
                             conn.Open();
-
+                            //string updateExpenseData = "IF expenses name = @category_name UPDATE expenses WHERE name = category_name "
                             string insertExpenseData = "INSERT INTO expenses (type, name, date, amount, grace, lateFee, passed, passedAmount, creditIssue)" +
                                 "VALUES(@category_type2, @category_name, @category_datepicker, @category_amount, @category_grace, @category_latefee, @category_passeddue, @category_howmuch, @category_30late)";
 
@@ -99,17 +160,18 @@ namespace BudgetSolutions
                                 cmd.Parameters.AddWithValue("@category_name", category_name.Text.Trim());
 
                                 cmd.Parameters.AddWithValue("@category_datepicker", category_datepicker.Value.Date);
+
+                                
+
                                 cmd.Parameters.AddWithValue("category_amount", userInputAmount);
 
                                 cmd.Parameters.AddWithValue("@category_grace", category_grace.SelectedItem);
 
+                                
+
                                 cmd.Parameters.AddWithValue("@category_latefee", userInputLate);
                                 cmd.Parameters.AddWithValue("@category_passeddue", category_passeddue.SelectedItem);
 
-                                if (!decimal.TryParse(category_howmuch.Text, out userInputDue))
-                                {
-                                    MessageBox.Show("Please enter amount in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
 
                                 cmd.Parameters.AddWithValue("@category_howmuch", userInputDue);
                                 cmd.Parameters.AddWithValue("@category_30late", category_30late.SelectedItem);
@@ -119,41 +181,49 @@ namespace BudgetSolutions
                                 MessageBox.Show("Expense Added Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                                 conn.Close();
-
-
                             }
                         }
 
                     }
                     else
                     {
-                        using (SqlConnection conn = new SqlConnection(stringConnection))
+                        if (!decimal.TryParse(category_amount.Text, out userInputAmount))
                         {
-                            conn.Open();
+                            MessageBox.Show("Please enter amount in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                            string insertExpenseData = "INSERT INTO expenses (type, name, date, amount, grace, lateFee, passed)" +
-                                "VALUES(@category_type2, @category_name, @category_datepicker, @category_amount, @category_grace, @category_latefee, @category_passeddue)";
-
-                            using (SqlCommand cmd = new SqlCommand(insertExpenseData, conn))
+                        }
+                        else if (!decimal.TryParse(category_latefee.Text, out userInputLate))
+                        {
+                            MessageBox.Show("Please enter amount in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            using (SqlConnection conn = new SqlConnection(stringConnection))
                             {
-                                cmd.Parameters.AddWithValue("@category_type2", category_type2.SelectedItem);
-                                cmd.Parameters.AddWithValue("@category_name", category_name.Text.Trim());
+                                conn.Open();
 
-                                cmd.Parameters.AddWithValue("@category_datepicker", category_datepicker.Value.Date);
-                                cmd.Parameters.AddWithValue("category_amount", userInputAmount);
+                                string insertExpenseData = "INSERT INTO expenses (type, name, date, amount, grace, lateFee, passed)" +
+                                    "VALUES(@category_type2, @category_name, @category_datepicker, @category_amount, @category_grace, @category_latefee, @category_passeddue)";
 
-                                cmd.Parameters.AddWithValue("@category_grace", category_grace.SelectedItem);
+                                using (SqlCommand cmd = new SqlCommand(insertExpenseData, conn))
+                                {
+                                    cmd.Parameters.AddWithValue("@category_type2", category_type2.SelectedItem);
+                                    cmd.Parameters.AddWithValue("@category_name", category_name.Text.Trim());
 
-                                cmd.Parameters.AddWithValue("@category_latefee", userInputLate);
-                                cmd.Parameters.AddWithValue("@category_passeddue", category_passeddue.SelectedItem);
+                                    cmd.Parameters.AddWithValue("@category_datepicker", category_datepicker.Value.Date);
+                                    cmd.Parameters.AddWithValue("category_amount", userInputAmount);
 
-                                cmd.ExecuteNonQuery();
+                                    cmd.Parameters.AddWithValue("@category_grace", category_grace.SelectedItem);
 
-                                MessageBox.Show("Expense Added Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    cmd.Parameters.AddWithValue("@category_latefee", userInputLate);
+                                    cmd.Parameters.AddWithValue("@category_passeddue", category_passeddue.SelectedItem);
 
-                                conn.Close();
+                                    cmd.ExecuteNonQuery();
 
+                                    MessageBox.Show("Expense Added Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                                    conn.Close();
+                                }
                             }
                         }
                     }
@@ -182,8 +252,6 @@ namespace BudgetSolutions
                 category_howmuch.Visible = false;
                 category_30latelabel.Visible = false;
                 category_30late.Visible = false;
-                
-
             }
             else if(category_type2.SelectedIndex > 11)
             {
@@ -207,8 +275,6 @@ namespace BudgetSolutions
                 category_grace.SelectedIndex = 0;
                 category_datepicker.Enabled = false;
             }
-
-
         }
 
         private void category_passeddue_SelectedIndexChanged(object sender, EventArgs e)
@@ -226,6 +292,22 @@ namespace BudgetSolutions
                 category_howmuch.Visible = false;
                 category_30latelabel.Visible = false;
                 category_30late.Visible = false;
+            }
+        }
+
+        private void category_type_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (category_type.SelectedIndex >= 0)
+            {
+                category_namelabel.Visible = true;
+                category_name.Visible = true;
+                category_amountlabel.Visible = true;
+                category_amount.Visible = true;
+                category_depositLabel.Visible = true;
+                category_datepicker.Visible = true;
+                category_datepicker.Enabled = true;
+                //amount
+                //date 
             }
         }
     }

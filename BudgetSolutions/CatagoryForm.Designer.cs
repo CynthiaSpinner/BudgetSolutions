@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.category_panel = new System.Windows.Forms.Panel();
+            this.category_depositLabel = new System.Windows.Forms.Label();
             this.category_30late = new System.Windows.Forms.ComboBox();
             this.category_30latelabel = new System.Windows.Forms.Label();
             this.category_howmuch = new System.Windows.Forms.TextBox();
@@ -62,6 +63,7 @@
             // category_panel
             // 
             this.category_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(178)))), ((int)(((byte)(184)))));
+            this.category_panel.Controls.Add(this.category_depositLabel);
             this.category_panel.Controls.Add(this.category_30late);
             this.category_panel.Controls.Add(this.category_30latelabel);
             this.category_panel.Controls.Add(this.category_howmuch);
@@ -90,6 +92,19 @@
             this.category_panel.Name = "category_panel";
             this.category_panel.Size = new System.Drawing.Size(559, 1134);
             this.category_panel.TabIndex = 0;
+            // 
+            // category_depositLabel
+            // 
+            this.category_depositLabel.AutoSize = true;
+            this.category_depositLabel.Font = new System.Drawing.Font("Mongolian Baiti", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.category_depositLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(124)))), ((int)(((byte)(128)))));
+            this.category_depositLabel.Location = new System.Drawing.Point(50, 304);
+            this.category_depositLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.category_depositLabel.Name = "category_depositLabel";
+            this.category_depositLabel.Size = new System.Drawing.Size(231, 30);
+            this.category_depositLabel.TabIndex = 26;
+            this.category_depositLabel.Text = "Last Deposit Date";
+            this.category_depositLabel.Visible = false;
             // 
             // category_30late
             // 
@@ -344,7 +359,9 @@
             "Loan",
             "Subscription",
             "Other- Bill",
-            "Food",
+            "Weekly Food",
+            "Bi-Weekly Food",
+            "Monthly Food",
             "Weekly Miscelleneous",
             "Monthly Miscelleneous",
             "Baby Weekly Expense",
@@ -386,6 +403,7 @@
             this.category_type.Size = new System.Drawing.Size(444, 38);
             this.category_type.TabIndex = 8;
             this.category_type.Visible = false;
+            this.category_type.SelectedIndexChanged += new System.EventHandler(this.category_type_SelectedIndexChanged);
             // 
             // category_category
             // 
@@ -534,5 +552,6 @@
         private System.Windows.Forms.TextBox category_howmuch;
         private System.Windows.Forms.ComboBox category_30late;
         private System.Windows.Forms.Label category_30latelabel;
+        private System.Windows.Forms.Label category_depositLabel;
     }
 }
