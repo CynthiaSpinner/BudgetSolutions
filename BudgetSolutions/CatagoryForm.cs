@@ -170,12 +170,16 @@ namespace BudgetSolutions
                         using (SqlConnection conn = new SqlConnection(stringConnection))
                         {
                             conn.Open();
-                            //string updateExpenseData = "IF expenses name = @category_name UPDATE expenses WHERE name = category_name "
-                            string insertExpenseData = "INSERT INTO expenses (type, name, date, amount, grace, lateFee, passed, passedAmount, creditIssue)" +
-                                "VALUES(@category_type2, @category_name, @category_datepicker, @category_amount, @category_grace, @category_latefee, @category_passeddue, @category_howmuch, @category_30late)";
 
+                            //string updateExpenseData = "UPDATE expenses SET category = @category_category, type = @category_type2, name = @category_name WHERE id = @id";
+                            // add stored procedure for add an update.
+                            
+                            string insertExpenseData = "INSERT INTO expenses (category, type, name, date, amount, grace, lateFee, passed, passedAmount, creditIssue)" +
+                                "VALUES(@category_category, @category_type2, @category_name, @category_datepicker, @category_amount, @category_grace, @category_latefee, @category_passeddue, @category_howmuch, @category_30late)";
+                            
                             using (SqlCommand cmd = new SqlCommand(insertExpenseData, conn))
                             {
+                                cmd.Parameters.AddWithValue("@category_category", category_category.SelectedItem);
                                 cmd.Parameters.AddWithValue("@category_type2", category_type2.SelectedItem);
                                 cmd.Parameters.AddWithValue("@category_name", category_name.Text.Trim());
 
@@ -222,16 +226,17 @@ namespace BudgetSolutions
                             {
                                 conn.Open();
 
-                                string insertExpenseData = "INSERT INTO expenses (type, name, date, amount, grace, lateFee, passed)" +
-                                    "VALUES(@category_type2, @category_name, @category_datepicker, @category_amount, @category_grace, @category_latefee, @category_passeddue)";
+                                string insertExpenseData = "INSERT INTO expenses (category, type, name, date, amount, grace, lateFee, passed)" +
+                                    "VALUES(@category_category, @category_type2, @category_name, @category_datepicker, @category_amount, @category_grace, @category_latefee, @category_passeddue)";
 
                                 using (SqlCommand cmd = new SqlCommand(insertExpenseData, conn))
                                 {
+                                    cmd.Parameters.AddWithValue("@category_category", category_category.SelectedItem);
                                     cmd.Parameters.AddWithValue("@category_type2", category_type2.SelectedItem);
                                     cmd.Parameters.AddWithValue("@category_name", category_name.Text.Trim());
 
                                     cmd.Parameters.AddWithValue("@category_datepicker", category_datepicker.Value.Date);
-                                    cmd.Parameters.AddWithValue("category_amount", userInputAmount);
+                                    cmd.Parameters.AddWithValue("@category_amount", userInputAmount);
 
                                     cmd.Parameters.AddWithValue("@category_grace", category_grace.SelectedItem);
 
