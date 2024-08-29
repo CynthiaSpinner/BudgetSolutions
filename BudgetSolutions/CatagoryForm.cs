@@ -19,6 +19,26 @@ namespace BudgetSolutions
         public CatagoryForm()
         {
             InitializeComponent();
+
+            displayExpenseData();
+
+            displayIncomeData();
+        }
+
+        public void displayExpenseData()
+        {
+            ExpenseData eData  = new ExpenseData();
+            List<ExpenseData> listExpense = eData.ExpenseListData();
+
+            dataGridView1.DataSource = listExpense;
+        }
+
+        public void displayIncomeData()
+        {
+            IncomeData iData = new IncomeData();
+            List<IncomeData> listIncome = iData.IncomeListData();
+
+            dataGridView2.DataSource = listIncome;
         }
 
         private void category_category_SelectedIndexChanged(object sender, EventArgs e)
@@ -308,6 +328,28 @@ namespace BudgetSolutions
                 category_datepicker.Enabled = true;
                 //amount
                 //date 
+            }
+        }
+        private int getID = 0;
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        
+            if (e.RowIndex != -1)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+
+                getID = Convert.ToInt32(row.Cells[0].Value);
+                category_category.SelectedItem = row.Cells[1].Value;
+                category_type2.SelectedItem = row.Cells[2].Value.ToString();
+                category_name.Text = row.Cells[3].Value.ToString();
+                category_amount.Text = row.Cells[5].Value.ToString();
+                category_grace.SelectedItem = row.Cells[6].Value.ToString();
+                category_latefee.Text = row.Cells[7].Value.ToString();
+                category_passeddue.SelectedItem = row.Cells[8].Value.ToString();
+                category_howmuch.Text = row.Cells[9].Value.ToString();
+                category_30late.SelectedItem = row.Cells[10].Value.ToString();
+
             }
         }
     }

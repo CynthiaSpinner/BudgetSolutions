@@ -31,3 +31,6 @@ CREATE TABLE income(
 )
 
 SELECT * FROM income
+
+ALTER TABLE expenses ADD
+	category VARCHAR(MAX) NULL;
