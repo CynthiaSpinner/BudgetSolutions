@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
+using static System.Net.Mime.MediaTypeNames;
+using System.Runtime.Serialization;
+using System.Xml.Linq;
 
 namespace BudgetSolutions
 {
@@ -173,39 +176,54 @@ namespace BudgetSolutions
 
                             //string updateExpenseData = "UPDATE expenses SET category = @category_category, type = @category_type2, name = @category_name WHERE id = @id";
                             // add stored procedure for add an update.
+                            //MERGE expenses WITH(SERIALIZABLE) AS T USING(VALUES(@ID, @category_category, @category_name)) 
+                            //    AS U (id, category, name) ON U.id = T.id
+                            //    WHEN MATCHED THEN
+                            //        UPDATE SET (type = @category_type2, date = @category_datepicker, amount = @category_amount, grace = @category_grace, lateFee = @category_latefee, passed = @category_passeddue, passedAmount = @category_howmuch, creditIssue = @category_30late)
+                            //    WHEN NOT MATCHED THEN
+                            //        INSERT(id, category, type, name, date, amount, grace, lateFee, passed, passedAmount, creditIssue)
+                            //        VALUES(@category_category, @category_type2, @category_name, @category_datepicker, @category_amount, @category_grace, @category_latefee,);
+
+                            //string insertExpenseData = "MERGE expenses WITH(SERIALIZABLE) AS T USING(VALUES(@ID, @category_category, @category_name)) " +
+                            //    "AS U (id, category, name) ON U.id = T.id" +
+                            //    " WHEN MATCHED THEN" +
+                            //    "UPDATE SET (id = @ID, type = @category_type2, date = @category_datepicker, amount = @category_amount, grace = @category_grace, lateFee = @category_latefee, passed = @category_passeddue, passedAmount = @category_howmuch, creditIssue = @category_30late)" +
+                            //    "WHEN NOT MATCHED THEN" +
+                            //    "INSERT(category, type, name, date, amount, grace, lateFee, passed, passedAmount, creditIssue)" +
+                            //    "VALUES(@category_category, @category_type2, @category_name, @category_datepicker, @category_amount, @category_grace, @category_latefee,)";
+
+
+
+                            SqlCommand cmd = new SqlCommand("dbo.procedure", conn);
+                            cmd.CommandType = CommandType.StoredProcedure;
                             
-                            string insertExpenseData = "INSERT INTO expenses (category, type, name, date, amount, grace, lateFee, passed, passedAmount, creditIssue)" +
-                                "VALUES(@category_category, @category_type2, @category_name, @category_datepicker, @category_amount, @category_grace, @category_latefee, @category_passeddue, @category_howmuch, @category_30late)";
+                            cmd.Parameters.AddWithValue("@category_category", category_category.SelectedItem);
+                            cmd.Parameters.AddWithValue("@category_type2", category_type2.SelectedItem);
+                            cmd.Parameters.AddWithValue("@category_name", category_name.Text.Trim());
+
+                            cmd.Parameters.AddWithValue("@category_datepicker", category_datepicker.Value.Date);
+
                             
-                            using (SqlCommand cmd = new SqlCommand(insertExpenseData, conn))
-                            {
-                                cmd.Parameters.AddWithValue("@category_category", category_category.SelectedItem);
-                                cmd.Parameters.AddWithValue("@category_type2", category_type2.SelectedItem);
-                                cmd.Parameters.AddWithValue("@category_name", category_name.Text.Trim());
 
-                                cmd.Parameters.AddWithValue("@category_datepicker", category_datepicker.Value.Date);
+                            cmd.Parameters.AddWithValue("@category_amount", userInputAmount);
 
-                                
+                            cmd.Parameters.AddWithValue("@category_grace", category_grace.SelectedItem);
 
-                                cmd.Parameters.AddWithValue("category_amount", userInputAmount);
+                            
 
-                                cmd.Parameters.AddWithValue("@category_grace", category_grace.SelectedItem);
-
-                                
-
-                                cmd.Parameters.AddWithValue("@category_latefee", userInputLate);
-                                cmd.Parameters.AddWithValue("@category_passeddue", category_passeddue.SelectedItem);
+                            cmd.Parameters.AddWithValue("@category_latefee", userInputLate);
+                            cmd.Parameters.AddWithValue("@category_passeddue", category_passeddue.SelectedItem);
 
 
-                                cmd.Parameters.AddWithValue("@category_howmuch", userInputDue);
-                                cmd.Parameters.AddWithValue("@category_30late", category_30late.SelectedItem);
+                            cmd.Parameters.AddWithValue("@category_howmuch", userInputDue);
+                            cmd.Parameters.AddWithValue("@category_30late", category_30late.SelectedItem);
 
-                                cmd.ExecuteNonQuery();
+                            cmd.ExecuteNonQuery();
 
-                                MessageBox.Show("Expense Added Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Expense Added Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                                conn.Close();
-                            }
+                            conn.Close();
+                            
                         }
 
                     }

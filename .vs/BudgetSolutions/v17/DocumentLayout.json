@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\cynth\\Desktop\\Repos\\BudgetSolutions\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{38F1DA26-06E3-445C-A323-5CD9C7FB20DE}|BudgetSolutions\\BudgetSolutions.csproj|C:\\Users\\cynth\\Desktop\\Repos\\BudgetSolutions\\budgetsolutions\\catagoryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{38F1DA26-06E3-445C-A323-5CD9C7FB20DE}|BudgetSolutions\\BudgetSolutions.csproj|c:\\users\\cynth\\desktop\\repos\\budgetsolutions\\budgetsolutions\\catagoryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{38F1DA26-06E3-445C-A323-5CD9C7FB20DE}|BudgetSolutions\\BudgetSolutions.csproj|solutionrelative:budgetsolutions\\catagoryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cynth\\Desktop\\Repos\\BudgetSolutions\\BudgetSolutions\\SQLQuery1.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BudgetSolutions\\SQLQuery1.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38F1DA26-06E3-445C-A323-5CD9C7FB20DE}|BudgetSolutions\\BudgetSolutions.csproj|C:\\Users\\cynth\\Desktop\\Repos\\BudgetSolutions\\budgetsolutions\\catagoryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{38F1DA26-06E3-445C-A323-5CD9C7FB20DE}|BudgetSolutions\\BudgetSolutions.csproj|solutionrelative:budgetsolutions\\catagoryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{38F1DA26-06E3-445C-A323-5CD9C7FB20DE}|BudgetSolutions\\BudgetSolutions.csproj|C:\\Users\\cynth\\Desktop\\Repos\\BudgetSolutions\\budgetsolutions\\incomedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -15,20 +23,12 @@
       "RelativeMoniker": "D:0:0:{38F1DA26-06E3-445C-A323-5CD9C7FB20DE}|BudgetSolutions\\BudgetSolutions.csproj|solutionrelative:budgetsolutions\\dashboardform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{38F1DA26-06E3-445C-A323-5CD9C7FB20DE}|BudgetSolutions\\BudgetSolutions.csproj|c:\\users\\cynth\\desktop\\repos\\budgetsolutions\\budgetsolutions\\catagoryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{38F1DA26-06E3-445C-A323-5CD9C7FB20DE}|BudgetSolutions\\BudgetSolutions.csproj|solutionrelative:budgetsolutions\\catagoryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{38F1DA26-06E3-445C-A323-5CD9C7FB20DE}|BudgetSolutions\\BudgetSolutions.csproj|C:\\Users\\cynth\\Desktop\\Repos\\BudgetSolutions\\budgetsolutions\\expensedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{38F1DA26-06E3-445C-A323-5CD9C7FB20DE}|BudgetSolutions\\BudgetSolutions.csproj|solutionrelative:budgetsolutions\\expensedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{38F1DA26-06E3-445C-A323-5CD9C7FB20DE}|BudgetSolutions\\BudgetSolutions.csproj|C:\\Users\\cynth\\Desktop\\Repos\\BudgetSolutions\\budgetsolutions\\dashboardform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{38F1DA26-06E3-445C-A323-5CD9C7FB20DE}|BudgetSolutions\\BudgetSolutions.csproj|solutionrelative:budgetsolutions\\dashboardform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cynth\\Desktop\\Repos\\BudgetSolutions\\BudgetSolutions\\SQLQuery1.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BudgetSolutions\\SQLQuery1.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{38F1DA26-06E3-445C-A323-5CD9C7FB20DE}|BudgetSolutions\\BudgetSolutions.csproj|C:\\Users\\cynth\\Desktop\\Repos\\BudgetSolutions\\budgetsolutions\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -94,7 +94,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "DashboardForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\cynth\\Desktop\\Repos\\BudgetSolutions\\BudgetSolutions\\DashboardForm.cs",
               "RelativeDocumentMoniker": "BudgetSolutions\\DashboardForm.cs",
@@ -102,8 +102,7 @@
               "RelativeToolTip": "BudgetSolutions\\DashboardForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-12T17:37:37.95Z",
-              "IsPinned": true,
-              "EditorCaption": " [Design]"
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -123,7 +122,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "CatagoryForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\cynth\\Desktop\\Repos\\BudgetSolutions\\BudgetSolutions\\CatagoryForm.cs",
               "RelativeDocumentMoniker": "BudgetSolutions\\CatagoryForm.cs",
@@ -141,14 +140,14 @@
               "RelativeDocumentMoniker": "BudgetSolutions\\CatagoryForm.cs",
               "ToolTip": "C:\\Users\\cynth\\Desktop\\Repos\\BudgetSolutions\\BudgetSolutions\\CatagoryForm.cs",
               "RelativeToolTip": "BudgetSolutions\\CatagoryForm.cs",
-              "ViewState": "AQIAANUAAAAAAAAAAAAAwK8AAAAcAAAA",
+              "ViewState": "AQIAAIsAAAAAAAAAAAAiwMQAAABKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-12T21:45:47.883Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "IncomeData.cs",
               "DocumentMoniker": "C:\\Users\\cynth\\Desktop\\Repos\\BudgetSolutions\\BudgetSolutions\\IncomeData.cs",
               "RelativeDocumentMoniker": "BudgetSolutions\\IncomeData.cs",
@@ -156,12 +155,11 @@
               "RelativeToolTip": "BudgetSolutions\\IncomeData.cs",
               "ViewState": "AQIAAAwAAAAAAAAAAAAowC8AAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-29T19:18:26.869Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-29T19:18:26.869Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "ExpenseData.cs",
               "DocumentMoniker": "C:\\Users\\cynth\\Desktop\\Repos\\BudgetSolutions\\BudgetSolutions\\ExpenseData.cs",
               "RelativeDocumentMoniker": "BudgetSolutions\\ExpenseData.cs",
@@ -169,8 +167,7 @@
               "RelativeToolTip": "BudgetSolutions\\ExpenseData.cs",
               "ViewState": "AQIAAAkAAAAAAAAAAAAAADYAAABOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-29T16:38:11.295Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-29T16:38:11.295Z"
             },
             {
               "$type": "Document",
@@ -186,7 +183,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "DashboardForm.cs",
               "DocumentMoniker": "C:\\Users\\cynth\\Desktop\\Repos\\BudgetSolutions\\BudgetSolutions\\DashboardForm.cs",
               "RelativeDocumentMoniker": "BudgetSolutions\\DashboardForm.cs",
@@ -194,12 +191,11 @@
               "RelativeToolTip": "BudgetSolutions\\DashboardForm.cs",
               "ViewState": "AQIAAAcAAAAAAAAAAAAMwBcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T18:08:46.586Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-12T18:08:46.586Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "SQLQuery1.sql",
               "DocumentMoniker": "C:\\Users\\cynth\\Desktop\\Repos\\BudgetSolutions\\BudgetSolutions\\SQLQuery1.sql",
               "RelativeDocumentMoniker": "BudgetSolutions\\SQLQuery1.sql",
