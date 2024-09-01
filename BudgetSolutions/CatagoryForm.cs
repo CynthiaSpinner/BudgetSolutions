@@ -136,7 +136,7 @@ namespace BudgetSolutions
                         {
 
                             cmd.Parameters.AddWithValue("@category_type", category_type.SelectedItem);
-                            cmd.Parameters.AddWithValue("@category_name", category_name.Text.Trim());
+                            cmd.Parameters.AddWithValue("@category_name", category_name.Text);
                             cmd.Parameters.AddWithValue("@category_datepicker", category_datepicker.Value.Date);
                             cmd.Parameters.AddWithValue("@category_amount", userIncomeInput);
 
@@ -194,12 +194,13 @@ namespace BudgetSolutions
 
 
 
-                            SqlCommand cmd = new SqlCommand("dbo.procedure", conn);
+                            SqlCommand cmd = new SqlCommand("AddAndUpdateExpense", conn);
                             cmd.CommandType = CommandType.StoredProcedure;
+                            
                             
                             cmd.Parameters.AddWithValue("@category_category", category_category.SelectedItem);
                             cmd.Parameters.AddWithValue("@category_type2", category_type2.SelectedItem);
-                            cmd.Parameters.AddWithValue("@category_name", category_name.Text.Trim());
+                            cmd.Parameters.AddWithValue("@category_name", category_name.Text);
 
                             cmd.Parameters.AddWithValue("@category_datepicker", category_datepicker.Value.Date);
 
@@ -244,29 +245,28 @@ namespace BudgetSolutions
                             {
                                 conn.Open();
 
-                                string insertExpenseData = "INSERT INTO expenses (category, type, name, date, amount, grace, lateFee, passed)" +
-                                    "VALUES(@category_category, @category_type2, @category_name, @category_datepicker, @category_amount, @category_grace, @category_latefee, @category_passeddue)";
+                                SqlCommand cmd = new SqlCommand("AddAndUpdateExpense", conn);
+                                
+                                cmd.CommandType = CommandType.StoredProcedure;
+                                
+                                cmd.Parameters.AddWithValue("@category_category", category_category.SelectedItem);
+                                cmd.Parameters.AddWithValue("@category_type2", category_type2.SelectedItem);
+                                cmd.Parameters.AddWithValue("@category_name", category_name.Text);
 
-                                using (SqlCommand cmd = new SqlCommand(insertExpenseData, conn))
-                                {
-                                    cmd.Parameters.AddWithValue("@category_category", category_category.SelectedItem);
-                                    cmd.Parameters.AddWithValue("@category_type2", category_type2.SelectedItem);
-                                    cmd.Parameters.AddWithValue("@category_name", category_name.Text.Trim());
+                                cmd.Parameters.AddWithValue("@category_datepicker", category_datepicker.Value.Date);
+                                cmd.Parameters.AddWithValue("@category_amount", userInputAmount);
 
-                                    cmd.Parameters.AddWithValue("@category_datepicker", category_datepicker.Value.Date);
-                                    cmd.Parameters.AddWithValue("@category_amount", userInputAmount);
+                                cmd.Parameters.AddWithValue("@category_grace", category_grace.SelectedItem);
 
-                                    cmd.Parameters.AddWithValue("@category_grace", category_grace.SelectedItem);
+                                cmd.Parameters.AddWithValue("@category_latefee", userInputLate);
+                                cmd.Parameters.AddWithValue("@category_passeddue", category_passeddue.SelectedItem);
 
-                                    cmd.Parameters.AddWithValue("@category_latefee", userInputLate);
-                                    cmd.Parameters.AddWithValue("@category_passeddue", category_passeddue.SelectedItem);
+                                cmd.ExecuteNonQuery();
 
-                                    cmd.ExecuteNonQuery();
+                                MessageBox.Show("Expense Added Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                                    MessageBox.Show("Expense Added Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                                    conn.Close();
-                                }
+                                conn.Close();
+                                
                             }
                         }
                     }
