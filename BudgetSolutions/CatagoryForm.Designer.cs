@@ -64,6 +64,7 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.category_ExpensesListLabel = new System.Windows.Forms.Label();
+            this.category_delete = new System.Windows.Forms.Button();
             this.category_panel.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -73,9 +74,11 @@
             // category_panel
             // 
             this.category_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(178)))), ((int)(((byte)(184)))));
+            this.category_panel.Controls.Add(this.category_delete);
             this.category_panel.Controls.Add(this.category_depositLabel);
             this.category_panel.Controls.Add(this.category_30late);
             this.category_panel.Controls.Add(this.category_30latelabel);
+            this.category_panel.Controls.Add(this.category_addUpdate);
             this.category_panel.Controls.Add(this.category_howmuch);
             this.category_panel.Controls.Add(this.category_passeddue);
             this.category_panel.Controls.Add(this.category_latefee);
@@ -94,12 +97,12 @@
             this.category_panel.Controls.Add(this.category_type);
             this.category_panel.Controls.Add(this.category_category);
             this.category_panel.Controls.Add(this.category_clear);
-            this.category_panel.Controls.Add(this.category_addUpdate);
             this.category_panel.Controls.Add(this.category_typeLabel);
             this.category_panel.Controls.Add(this.label1);
-            this.category_panel.Location = new System.Drawing.Point(20, 19);
+            this.category_panel.Location = new System.Drawing.Point(37, 35);
+            this.category_panel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.category_panel.Name = "category_panel";
-            this.category_panel.Size = new System.Drawing.Size(305, 614);
+            this.category_panel.Size = new System.Drawing.Size(559, 1134);
             this.category_panel.TabIndex = 0;
             // 
             // category_depositLabel
@@ -107,9 +110,10 @@
             this.category_depositLabel.AutoSize = true;
             this.category_depositLabel.Font = new System.Drawing.Font("Mongolian Baiti", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.category_depositLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(124)))), ((int)(((byte)(128)))));
-            this.category_depositLabel.Location = new System.Drawing.Point(27, 165);
+            this.category_depositLabel.Location = new System.Drawing.Point(50, 305);
+            this.category_depositLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.category_depositLabel.Name = "category_depositLabel";
-            this.category_depositLabel.Size = new System.Drawing.Size(138, 16);
+            this.category_depositLabel.Size = new System.Drawing.Size(231, 30);
             this.category_depositLabel.TabIndex = 26;
             this.category_depositLabel.Text = "Last Deposit Date";
             this.category_depositLabel.Visible = false;
@@ -125,10 +129,10 @@
             "30 days+",
             "60 days+",
             "90 days+"});
-            this.category_30late.Location = new System.Drawing.Point(30, 487);
-            this.category_30late.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.category_30late.Location = new System.Drawing.Point(55, 899);
+            this.category_30late.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.category_30late.Name = "category_30late";
-            this.category_30late.Size = new System.Drawing.Size(244, 24);
+            this.category_30late.Size = new System.Drawing.Size(444, 38);
             this.category_30late.TabIndex = 25;
             this.category_30late.Visible = false;
             // 
@@ -137,9 +141,10 @@
             this.category_30latelabel.AutoSize = true;
             this.category_30latelabel.Font = new System.Drawing.Font("Mongolian Baiti", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.category_30latelabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(124)))), ((int)(((byte)(128)))));
-            this.category_30latelabel.Location = new System.Drawing.Point(27, 469);
+            this.category_30latelabel.Location = new System.Drawing.Point(50, 866);
+            this.category_30latelabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.category_30latelabel.Name = "category_30latelabel";
-            this.category_30latelabel.Size = new System.Drawing.Size(102, 16);
+            this.category_30latelabel.Size = new System.Drawing.Size(171, 30);
             this.category_30latelabel.TabIndex = 24;
             this.category_30latelabel.Text = "30 days late?";
             this.category_30latelabel.Visible = false;
@@ -149,10 +154,10 @@
             this.category_howmuch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(239)))), ((int)(((byte)(243)))));
             this.category_howmuch.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.category_howmuch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(124)))), ((int)(((byte)(128)))));
-            this.category_howmuch.Location = new System.Drawing.Point(30, 437);
-            this.category_howmuch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.category_howmuch.Location = new System.Drawing.Point(55, 807);
+            this.category_howmuch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.category_howmuch.Name = "category_howmuch";
-            this.category_howmuch.Size = new System.Drawing.Size(244, 26);
+            this.category_howmuch.Size = new System.Drawing.Size(444, 40);
             this.category_howmuch.TabIndex = 23;
             this.category_howmuch.Visible = false;
             // 
@@ -165,10 +170,10 @@
             this.category_passeddue.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.category_passeddue.Location = new System.Drawing.Point(30, 388);
-            this.category_passeddue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.category_passeddue.Location = new System.Drawing.Point(55, 716);
+            this.category_passeddue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.category_passeddue.Name = "category_passeddue";
-            this.category_passeddue.Size = new System.Drawing.Size(244, 24);
+            this.category_passeddue.Size = new System.Drawing.Size(444, 38);
             this.category_passeddue.TabIndex = 22;
             this.category_passeddue.Visible = false;
             this.category_passeddue.SelectedIndexChanged += new System.EventHandler(this.category_passeddue_SelectedIndexChanged);
@@ -178,10 +183,10 @@
             this.category_latefee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(239)))), ((int)(((byte)(243)))));
             this.category_latefee.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.category_latefee.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(124)))), ((int)(((byte)(128)))));
-            this.category_latefee.Location = new System.Drawing.Point(30, 338);
-            this.category_latefee.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.category_latefee.Location = new System.Drawing.Point(55, 624);
+            this.category_latefee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.category_latefee.Name = "category_latefee";
-            this.category_latefee.Size = new System.Drawing.Size(244, 26);
+            this.category_latefee.Size = new System.Drawing.Size(444, 40);
             this.category_latefee.TabIndex = 21;
             this.category_latefee.Visible = false;
             // 
@@ -208,10 +213,10 @@
             "13 days",
             "14 days",
             "15 days"});
-            this.category_grace.Location = new System.Drawing.Point(30, 286);
-            this.category_grace.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.category_grace.Location = new System.Drawing.Point(55, 528);
+            this.category_grace.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.category_grace.Name = "category_grace";
-            this.category_grace.Size = new System.Drawing.Size(244, 24);
+            this.category_grace.Size = new System.Drawing.Size(444, 38);
             this.category_grace.TabIndex = 20;
             this.category_grace.Visible = false;
             // 
@@ -220,10 +225,10 @@
             this.category_amount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(239)))), ((int)(((byte)(243)))));
             this.category_amount.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.category_amount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(124)))), ((int)(((byte)(128)))));
-            this.category_amount.Location = new System.Drawing.Point(30, 234);
-            this.category_amount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.category_amount.Location = new System.Drawing.Point(55, 432);
+            this.category_amount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.category_amount.Name = "category_amount";
-            this.category_amount.Size = new System.Drawing.Size(244, 26);
+            this.category_amount.Size = new System.Drawing.Size(444, 40);
             this.category_amount.TabIndex = 19;
             this.category_amount.Visible = false;
             // 
@@ -237,10 +242,10 @@
             this.category_datepicker.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(124)))), ((int)(((byte)(128)))));
             this.category_datepicker.Checked = false;
             this.category_datepicker.Font = new System.Drawing.Font("Mongolian Baiti", 11.14286F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.category_datepicker.Location = new System.Drawing.Point(30, 183);
-            this.category_datepicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.category_datepicker.Location = new System.Drawing.Point(55, 338);
+            this.category_datepicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.category_datepicker.Name = "category_datepicker";
-            this.category_datepicker.Size = new System.Drawing.Size(244, 25);
+            this.category_datepicker.Size = new System.Drawing.Size(444, 37);
             this.category_datepicker.TabIndex = 18;
             this.category_datepicker.Visible = false;
             // 
@@ -249,10 +254,10 @@
             this.category_name.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(239)))), ((int)(((byte)(243)))));
             this.category_name.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.category_name.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(124)))), ((int)(((byte)(128)))));
-            this.category_name.Location = new System.Drawing.Point(30, 132);
-            this.category_name.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.category_name.Location = new System.Drawing.Point(55, 244);
+            this.category_name.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.category_name.Name = "category_name";
-            this.category_name.Size = new System.Drawing.Size(244, 26);
+            this.category_name.Size = new System.Drawing.Size(444, 40);
             this.category_name.TabIndex = 17;
             this.category_name.Visible = false;
             // 
@@ -261,9 +266,10 @@
             this.category_namelabel.AutoSize = true;
             this.category_namelabel.Font = new System.Drawing.Font("Mongolian Baiti", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.category_namelabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(124)))), ((int)(((byte)(128)))));
-            this.category_namelabel.Location = new System.Drawing.Point(27, 114);
+            this.category_namelabel.Location = new System.Drawing.Point(50, 210);
+            this.category_namelabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.category_namelabel.Name = "category_namelabel";
-            this.category_namelabel.Size = new System.Drawing.Size(80, 16);
+            this.category_namelabel.Size = new System.Drawing.Size(135, 30);
             this.category_namelabel.TabIndex = 16;
             this.category_namelabel.Text = "Nickname";
             this.category_namelabel.Visible = false;
@@ -273,9 +279,10 @@
             this.category_duedatelabel.AutoSize = true;
             this.category_duedatelabel.Font = new System.Drawing.Font("Mongolian Baiti", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.category_duedatelabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(124)))), ((int)(((byte)(128)))));
-            this.category_duedatelabel.Location = new System.Drawing.Point(27, 165);
+            this.category_duedatelabel.Location = new System.Drawing.Point(50, 305);
+            this.category_duedatelabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.category_duedatelabel.Name = "category_duedatelabel";
-            this.category_duedatelabel.Size = new System.Drawing.Size(76, 16);
+            this.category_duedatelabel.Size = new System.Drawing.Size(126, 30);
             this.category_duedatelabel.TabIndex = 15;
             this.category_duedatelabel.Text = "Due Date";
             this.category_duedatelabel.Visible = false;
@@ -285,9 +292,10 @@
             this.category_amountlabel.AutoSize = true;
             this.category_amountlabel.Font = new System.Drawing.Font("Mongolian Baiti", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.category_amountlabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(124)))), ((int)(((byte)(128)))));
-            this.category_amountlabel.Location = new System.Drawing.Point(27, 216);
+            this.category_amountlabel.Location = new System.Drawing.Point(50, 399);
+            this.category_amountlabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.category_amountlabel.Name = "category_amountlabel";
-            this.category_amountlabel.Size = new System.Drawing.Size(70, 16);
+            this.category_amountlabel.Size = new System.Drawing.Size(119, 30);
             this.category_amountlabel.TabIndex = 14;
             this.category_amountlabel.Text = "Amount ";
             this.category_amountlabel.Visible = false;
@@ -297,9 +305,10 @@
             this.category_gracelabel.AutoSize = true;
             this.category_gracelabel.Font = new System.Drawing.Font("Mongolian Baiti", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.category_gracelabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(124)))), ((int)(((byte)(128)))));
-            this.category_gracelabel.Location = new System.Drawing.Point(27, 268);
+            this.category_gracelabel.Location = new System.Drawing.Point(50, 495);
+            this.category_gracelabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.category_gracelabel.Name = "category_gracelabel";
-            this.category_gracelabel.Size = new System.Drawing.Size(102, 16);
+            this.category_gracelabel.Size = new System.Drawing.Size(170, 30);
             this.category_gracelabel.TabIndex = 13;
             this.category_gracelabel.Text = "Grace Period";
             this.category_gracelabel.Visible = false;
@@ -309,9 +318,10 @@
             this.category_latefeelabel.AutoSize = true;
             this.category_latefeelabel.Font = new System.Drawing.Font("Mongolian Baiti", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.category_latefeelabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(124)))), ((int)(((byte)(128)))));
-            this.category_latefeelabel.Location = new System.Drawing.Point(27, 320);
+            this.category_latefeelabel.Location = new System.Drawing.Point(50, 591);
+            this.category_latefeelabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.category_latefeelabel.Name = "category_latefeelabel";
-            this.category_latefeelabel.Size = new System.Drawing.Size(190, 16);
+            this.category_latefeelabel.Size = new System.Drawing.Size(317, 30);
             this.category_latefeelabel.TabIndex = 12;
             this.category_latefeelabel.Text = "Late Fee Charge Amount";
             this.category_latefeelabel.Visible = false;
@@ -321,9 +331,10 @@
             this.category_passedlabel.AutoSize = true;
             this.category_passedlabel.Font = new System.Drawing.Font("Mongolian Baiti", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.category_passedlabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(124)))), ((int)(((byte)(128)))));
-            this.category_passedlabel.Location = new System.Drawing.Point(27, 370);
+            this.category_passedlabel.Location = new System.Drawing.Point(50, 683);
+            this.category_passedlabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.category_passedlabel.Name = "category_passedlabel";
-            this.category_passedlabel.Size = new System.Drawing.Size(99, 16);
+            this.category_passedlabel.Size = new System.Drawing.Size(165, 30);
             this.category_passedlabel.TabIndex = 11;
             this.category_passedlabel.Text = "Passed Due?";
             this.category_passedlabel.Visible = false;
@@ -333,9 +344,10 @@
             this.category_howmuchlabel.AutoSize = true;
             this.category_howmuchlabel.Font = new System.Drawing.Font("Mongolian Baiti", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.category_howmuchlabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(124)))), ((int)(((byte)(128)))));
-            this.category_howmuchlabel.Location = new System.Drawing.Point(27, 419);
+            this.category_howmuchlabel.Location = new System.Drawing.Point(50, 774);
+            this.category_howmuchlabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.category_howmuchlabel.Name = "category_howmuchlabel";
-            this.category_howmuchlabel.Size = new System.Drawing.Size(96, 16);
+            this.category_howmuchlabel.Size = new System.Drawing.Size(160, 30);
             this.category_howmuchlabel.TabIndex = 10;
             this.category_howmuchlabel.Text = "How Much?";
             this.category_howmuchlabel.Visible = false;
@@ -369,10 +381,10 @@
             "Weekly Transportation",
             "Weekly Gas",
             "Other Expense"});
-            this.category_type2.Location = new System.Drawing.Point(30, 83);
-            this.category_type2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.category_type2.Location = new System.Drawing.Point(55, 153);
+            this.category_type2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.category_type2.Name = "category_type2";
-            this.category_type2.Size = new System.Drawing.Size(244, 24);
+            this.category_type2.Size = new System.Drawing.Size(444, 38);
             this.category_type2.TabIndex = 9;
             this.category_type2.Visible = false;
             this.category_type2.SelectedIndexChanged += new System.EventHandler(this.category_type2_SelectedIndexChanged);
@@ -397,9 +409,10 @@
             "Food Stamps",
             "Wic",
             "Other"});
-            this.category_type.Location = new System.Drawing.Point(30, 83);
+            this.category_type.Location = new System.Drawing.Point(55, 153);
+            this.category_type.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.category_type.Name = "category_type";
-            this.category_type.Size = new System.Drawing.Size(244, 24);
+            this.category_type.Size = new System.Drawing.Size(444, 38);
             this.category_type.TabIndex = 8;
             this.category_type.Visible = false;
             this.category_type.SelectedIndexChanged += new System.EventHandler(this.category_type_SelectedIndexChanged);
@@ -413,9 +426,10 @@
             this.category_category.Items.AddRange(new object[] {
             "Income",
             "Expense"});
-            this.category_category.Location = new System.Drawing.Point(30, 34);
+            this.category_category.Location = new System.Drawing.Point(55, 63);
+            this.category_category.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.category_category.Name = "category_category";
-            this.category_category.Size = new System.Drawing.Size(244, 24);
+            this.category_category.Size = new System.Drawing.Size(444, 38);
             this.category_category.TabIndex = 7;
             this.category_category.SelectedIndexChanged += new System.EventHandler(this.category_category_SelectedIndexChanged);
             // 
@@ -424,11 +438,12 @@
             this.category_clear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(124)))), ((int)(((byte)(128)))));
             this.category_clear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.category_clear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(239)))), ((int)(((byte)(243)))));
-            this.category_clear.Location = new System.Drawing.Point(57, 529);
+            this.category_clear.Location = new System.Drawing.Point(109, 1053);
+            this.category_clear.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.category_clear.Name = "category_clear";
-            this.category_clear.Size = new System.Drawing.Size(188, 34);
+            this.category_clear.Size = new System.Drawing.Size(152, 63);
             this.category_clear.TabIndex = 5;
-            this.category_clear.Text = "CLEAR ALL FIELDS";
+            this.category_clear.Text = "CLEAR ALL";
             this.category_clear.UseVisualStyleBackColor = false;
             // 
             // category_addUpdate
@@ -436,9 +451,10 @@
             this.category_addUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(124)))), ((int)(((byte)(128)))));
             this.category_addUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.category_addUpdate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(239)))), ((int)(((byte)(243)))));
-            this.category_addUpdate.Location = new System.Drawing.Point(57, 569);
+            this.category_addUpdate.Location = new System.Drawing.Point(109, 970);
+            this.category_addUpdate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.category_addUpdate.Name = "category_addUpdate";
-            this.category_addUpdate.Size = new System.Drawing.Size(188, 33);
+            this.category_addUpdate.Size = new System.Drawing.Size(345, 61);
             this.category_addUpdate.TabIndex = 3;
             this.category_addUpdate.Text = "ADD/UPDATE";
             this.category_addUpdate.UseVisualStyleBackColor = false;
@@ -449,9 +465,10 @@
             this.category_typeLabel.AutoSize = true;
             this.category_typeLabel.Font = new System.Drawing.Font("Mongolian Baiti", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.category_typeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(124)))), ((int)(((byte)(128)))));
-            this.category_typeLabel.Location = new System.Drawing.Point(27, 64);
+            this.category_typeLabel.Location = new System.Drawing.Point(50, 118);
+            this.category_typeLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.category_typeLabel.Name = "category_typeLabel";
-            this.category_typeLabel.Size = new System.Drawing.Size(44, 16);
+            this.category_typeLabel.Size = new System.Drawing.Size(74, 30);
             this.category_typeLabel.TabIndex = 2;
             this.category_typeLabel.Text = "Type";
             this.category_typeLabel.Visible = false;
@@ -461,9 +478,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Mongolian Baiti", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(124)))), ((int)(((byte)(128)))));
-            this.label1.Location = new System.Drawing.Point(27, 15);
+            this.label1.Location = new System.Drawing.Point(50, 28);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 16);
+            this.label1.Size = new System.Drawing.Size(123, 30);
             this.label1.TabIndex = 0;
             this.label1.Text = "Category";
             // 
@@ -474,9 +492,10 @@
             this.panel2.Controls.Add(this.dataGridView2);
             this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Controls.Add(this.category_ExpensesListLabel);
-            this.panel2.Location = new System.Drawing.Point(344, 19);
+            this.panel2.Location = new System.Drawing.Point(631, 35);
+            this.panel2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(774, 614);
+            this.panel2.Size = new System.Drawing.Size(1419, 1134);
             this.panel2.TabIndex = 1;
             // 
             // category_IncomeListLabel
@@ -484,9 +503,10 @@
             this.category_IncomeListLabel.AutoSize = true;
             this.category_IncomeListLabel.Font = new System.Drawing.Font("Mongolian Baiti", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.category_IncomeListLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(124)))), ((int)(((byte)(128)))));
-            this.category_IncomeListLabel.Location = new System.Drawing.Point(326, 380);
+            this.category_IncomeListLabel.Location = new System.Drawing.Point(598, 702);
+            this.category_IncomeListLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.category_IncomeListLabel.Name = "category_IncomeListLabel";
-            this.category_IncomeListLabel.Size = new System.Drawing.Size(122, 23);
+            this.category_IncomeListLabel.Size = new System.Drawing.Size(205, 40);
             this.category_IncomeListLabel.TabIndex = 4;
             this.category_IncomeListLabel.Text = "Income List";
             // 
@@ -517,8 +537,8 @@
             this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView2.EnableHeadersVisualStyles = false;
             this.dataGridView2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(124)))), ((int)(((byte)(128)))));
-            this.dataGridView2.Location = new System.Drawing.Point(170, 408);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView2.Location = new System.Drawing.Point(312, 753);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -533,7 +553,7 @@
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowHeadersWidth = 72;
             this.dataGridView2.RowTemplate.Height = 31;
-            this.dataGridView2.Size = new System.Drawing.Size(425, 112);
+            this.dataGridView2.Size = new System.Drawing.Size(779, 207);
             this.dataGridView2.TabIndex = 3;
             // 
             // dataGridView1
@@ -563,8 +583,8 @@
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(124)))), ((int)(((byte)(128)))));
-            this.dataGridView1.Location = new System.Drawing.Point(27, 59);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Location = new System.Drawing.Point(50, 109);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -579,7 +599,7 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 72;
             this.dataGridView1.RowTemplate.Height = 31;
-            this.dataGridView1.Size = new System.Drawing.Size(720, 243);
+            this.dataGridView1.Size = new System.Drawing.Size(1320, 449);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -588,21 +608,37 @@
             this.category_ExpensesListLabel.AutoSize = true;
             this.category_ExpensesListLabel.Font = new System.Drawing.Font("Mongolian Baiti", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.category_ExpensesListLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(124)))), ((int)(((byte)(128)))));
-            this.category_ExpensesListLabel.Location = new System.Drawing.Point(23, 28);
+            this.category_ExpensesListLabel.Location = new System.Drawing.Point(42, 52);
+            this.category_ExpensesListLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.category_ExpensesListLabel.Name = "category_ExpensesListLabel";
-            this.category_ExpensesListLabel.Size = new System.Drawing.Size(141, 23);
+            this.category_ExpensesListLabel.Size = new System.Drawing.Size(236, 40);
             this.category_ExpensesListLabel.TabIndex = 1;
             this.category_ExpensesListLabel.Text = "Expenses List";
             // 
+            // category_delete
+            // 
+            this.category_delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(124)))), ((int)(((byte)(128)))));
+            this.category_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.category_delete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(239)))), ((int)(((byte)(243)))));
+            this.category_delete.Location = new System.Drawing.Point(291, 1053);
+            this.category_delete.Margin = new System.Windows.Forms.Padding(6);
+            this.category_delete.Name = "category_delete";
+            this.category_delete.Size = new System.Drawing.Size(163, 63);
+            this.category_delete.TabIndex = 27;
+            this.category_delete.Text = "DELETE";
+            this.category_delete.UseVisualStyleBackColor = false;
+            this.category_delete.Click += new System.EventHandler(this.category_delete_Click);
+            // 
             // CatagoryForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(239)))), ((int)(((byte)(243)))));
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.category_panel);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "CatagoryForm";
-            this.Size = new System.Drawing.Size(1135, 657);
+            this.Size = new System.Drawing.Size(2081, 1213);
             this.category_panel.ResumeLayout(false);
             this.category_panel.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -645,5 +681,6 @@
         private System.Windows.Forms.Label category_IncomeListLabel;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button category_delete;
     }
 }

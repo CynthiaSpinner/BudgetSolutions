@@ -90,7 +90,7 @@ namespace BudgetSolutions
             decimal userInputAmount;
             decimal userInputLate;
             decimal userInputDue;
-           
+
 
 
             if (category_category.SelectedIndex < 0 && category_type2.SelectedIndex < 0 || category_category.SelectedIndex < 0 && category_name.Text == "" ||
@@ -116,162 +116,134 @@ namespace BudgetSolutions
             {
                 MessageBox.Show("Please fill out all fields", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-  
-            if(category_category.SelectedIndex == 0)
+            else
             {
-                using (SqlConnection conn  = new SqlConnection(stringConnection))
+
+
+
+                if (category_category.SelectedIndex == 0)
                 {
-                    decimal userIncomeInput;
-                    if (!decimal.TryParse(category_amount.Text, out userIncomeInput))
+                    using (SqlConnection conn = new SqlConnection(stringConnection))
                     {
-                        MessageBox.Show("Please enter amount in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        conn.Open();
-                        string insertIncomeData = "INSERT INTO income (type, name, date, amount)" +
-                            "VALUES(@category_type, @category_name, @category_datepicker, @category_amount)";
+                        decimal userIncomeInput;
 
-                        using (SqlCommand cmd = new SqlCommand(insertIncomeData, conn))
-                        {
-
-                            cmd.Parameters.AddWithValue("@category_type", category_type.SelectedItem);
-                            cmd.Parameters.AddWithValue("@category_name", category_name.Text);
-                            cmd.Parameters.AddWithValue("@category_datepicker", category_datepicker.Value.Date);
-                            cmd.Parameters.AddWithValue("@category_amount", userIncomeInput);
-
-                            cmd.ExecuteNonQuery();
-
-                            MessageBox.Show("Income added successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            conn.Close();
-                        }
-                    }
-                }
-            }
-
-            if (category_category.SelectedIndex == 1)
-            {
-                if (!decimal.TryParse(category_amount.Text, out userInputAmount))
-                {
-                    MessageBox.Show("Please enter amount in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                }
-                else if (!decimal.TryParse(category_latefee.Text, out userInputLate))
-                {
-                    MessageBox.Show("Please enter amount in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else if (!decimal.TryParse(category_howmuch.Text, out userInputDue))
-                {
-                    MessageBox.Show("Please enter amount in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else if(MessageBox.Show("Are you sure you want to add this item?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-                     == DialogResult.Yes)
-                {
-                    if (category_passeddue.SelectedIndex == 0)
-                    {
-                        using (SqlConnection conn = new SqlConnection(stringConnection))
-                        {
-                            conn.Open();
-
-                            //string updateExpenseData = "UPDATE expenses SET category = @category_category, type = @category_type2, name = @category_name WHERE id = @id";
-                            // add stored procedure for add an update.
-                            //MERGE expenses WITH(SERIALIZABLE) AS T USING(VALUES(@ID, @category_category, @category_name)) 
-                            //    AS U (id, category, name) ON U.id = T.id
-                            //    WHEN MATCHED THEN
-                            //        UPDATE SET (type = @category_type2, date = @category_datepicker, amount = @category_amount, grace = @category_grace, lateFee = @category_latefee, passed = @category_passeddue, passedAmount = @category_howmuch, creditIssue = @category_30late)
-                            //    WHEN NOT MATCHED THEN
-                            //        INSERT(id, category, type, name, date, amount, grace, lateFee, passed, passedAmount, creditIssue)
-                            //        VALUES(@category_category, @category_type2, @category_name, @category_datepicker, @category_amount, @category_grace, @category_latefee,);
-
-                            //string insertExpenseData = "MERGE expenses WITH(SERIALIZABLE) AS T USING(VALUES(@ID, @category_category, @category_name)) " +
-                            //    "AS U (id, category, name) ON U.id = T.id" +
-                            //    " WHEN MATCHED THEN" +
-                            //    "UPDATE SET (id = @ID, type = @category_type2, date = @category_datepicker, amount = @category_amount, grace = @category_grace, lateFee = @category_latefee, passed = @category_passeddue, passedAmount = @category_howmuch, creditIssue = @category_30late)" +
-                            //    "WHEN NOT MATCHED THEN" +
-                            //    "INSERT(category, type, name, date, amount, grace, lateFee, passed, passedAmount, creditIssue)" +
-                            //    "VALUES(@category_category, @category_type2, @category_name, @category_datepicker, @category_amount, @category_grace, @category_latefee,)";
-
-
-
-                            SqlCommand cmd = new SqlCommand("AddAndUpdateExpense", conn);
-                            cmd.CommandType = CommandType.StoredProcedure;
-                            
-                            
-                            cmd.Parameters.AddWithValue("@category_category", category_category.SelectedItem);
-                            cmd.Parameters.AddWithValue("@category_type2", category_type2.SelectedItem);
-                            cmd.Parameters.AddWithValue("@category_name", category_name.Text);
-
-                            cmd.Parameters.AddWithValue("@category_datepicker", category_datepicker.Value.Date);
-
-                            
-
-                            cmd.Parameters.AddWithValue("@category_amount", userInputAmount);
-
-                            cmd.Parameters.AddWithValue("@category_grace", category_grace.SelectedItem);
-
-                            
-
-                            cmd.Parameters.AddWithValue("@category_latefee", userInputLate);
-                            cmd.Parameters.AddWithValue("@category_passeddue", category_passeddue.SelectedItem);
-
-
-                            cmd.Parameters.AddWithValue("@category_howmuch", userInputDue);
-                            cmd.Parameters.AddWithValue("@category_30late", category_30late.SelectedItem);
-
-                            cmd.ExecuteNonQuery();
-
-                            MessageBox.Show("Expense Added Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            conn.Close();
-                            
-                        }
-
-                    }
-                    else
-                    {
-                        if (!decimal.TryParse(category_amount.Text, out userInputAmount))
-                        {
-                            MessageBox.Show("Please enter amount in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                        }
-                        else if (!decimal.TryParse(category_latefee.Text, out userInputLate))
+                        if (!decimal.TryParse(category_amount.Text, out userIncomeInput))
                         {
                             MessageBox.Show("Please enter amount in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
+                        {
+                            if (MessageBox.Show("Are you sure you want to add/update this item?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                            == DialogResult.Yes)
+                            {
+                                conn.Open();
+
+                                SqlCommand cmd = new SqlCommand("AddAndUpdateIncome", conn);
+                                cmd.CommandType = CommandType.StoredProcedure;
+
+                                cmd.Parameters.AddWithValue("@category_type", category_type.SelectedItem);
+                                cmd.Parameters.AddWithValue("@category_name", category_name.Text);
+                                cmd.Parameters.AddWithValue("@category_datepicker", category_datepicker.Value.Date);
+                                cmd.Parameters.AddWithValue("@category_amount", userIncomeInput);
+
+                                cmd.ExecuteNonQuery();
+
+                                MessageBox.Show("Income added successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                conn.Close();
+                            }
+                        }
+                    }
+                }
+
+                if (category_category.SelectedIndex == 1)
+                {
+                    if (!decimal.TryParse(category_amount.Text, out userInputAmount))
+                    {
+                        MessageBox.Show("Please enter amount in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+                    else if (!decimal.TryParse(category_latefee.Text, out userInputLate))
+                    {
+                        MessageBox.Show("Please enter amount in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (!decimal.TryParse(category_howmuch.Text, out userInputDue))
+                    {
+                        MessageBox.Show("Please enter amount in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (MessageBox.Show("Are you sure you want to add/update this item?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                         == DialogResult.Yes)
+                    {
+                        if (category_passeddue.SelectedIndex == 0)
                         {
                             using (SqlConnection conn = new SqlConnection(stringConnection))
                             {
                                 conn.Open();
 
                                 SqlCommand cmd = new SqlCommand("AddAndUpdateExpense", conn);
-                                
                                 cmd.CommandType = CommandType.StoredProcedure;
-                                
+
                                 cmd.Parameters.AddWithValue("@category_category", category_category.SelectedItem);
                                 cmd.Parameters.AddWithValue("@category_type2", category_type2.SelectedItem);
                                 cmd.Parameters.AddWithValue("@category_name", category_name.Text);
-
                                 cmd.Parameters.AddWithValue("@category_datepicker", category_datepicker.Value.Date);
                                 cmd.Parameters.AddWithValue("@category_amount", userInputAmount);
-
                                 cmd.Parameters.AddWithValue("@category_grace", category_grace.SelectedItem);
-
                                 cmd.Parameters.AddWithValue("@category_latefee", userInputLate);
                                 cmd.Parameters.AddWithValue("@category_passeddue", category_passeddue.SelectedItem);
+                                cmd.Parameters.AddWithValue("@category_howmuch", userInputDue);
+                                cmd.Parameters.AddWithValue("@category_30late", category_30late.SelectedItem);
 
                                 cmd.ExecuteNonQuery();
 
                                 MessageBox.Show("Expense Added Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                                 conn.Close();
-                                
+                            }
+                        }
+                        else
+                        {
+                            if (!decimal.TryParse(category_amount.Text, out userInputAmount))
+                            {
+                                MessageBox.Show("Please enter amount in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            }
+                            else if (!decimal.TryParse(category_latefee.Text, out userInputLate))
+                            {
+                                MessageBox.Show("Please enter amount in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                using (SqlConnection conn = new SqlConnection(stringConnection))
+                                {
+                                    conn.Open();
+
+                                    SqlCommand cmd = new SqlCommand("AddAndUpdateExpense", conn);
+
+                                    cmd.CommandType = CommandType.StoredProcedure;
+
+                                    cmd.Parameters.AddWithValue("@category_category", category_category.SelectedItem);
+                                    cmd.Parameters.AddWithValue("@category_type2", category_type2.SelectedItem);
+                                    cmd.Parameters.AddWithValue("@category_name", category_name.Text);
+                                    cmd.Parameters.AddWithValue("@category_datepicker", category_datepicker.Value.Date);
+                                    cmd.Parameters.AddWithValue("@category_amount", userInputAmount);
+                                    cmd.Parameters.AddWithValue("@category_grace", category_grace.SelectedItem);
+                                    cmd.Parameters.AddWithValue("@category_latefee", userInputLate);
+                                    cmd.Parameters.AddWithValue("@category_passeddue", category_passeddue.SelectedItem);
+
+                                    cmd.ExecuteNonQuery();
+
+                                    MessageBox.Show("Expense Added/Updated Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                    conn.Close();
+                                }
                             }
                         }
                     }
                 }
             }
+            displayExpenseData();
+            displayIncomeData();
         }
 
         private void category_type2_SelectedIndexChanged(object sender, EventArgs e)
@@ -374,6 +346,11 @@ namespace BudgetSolutions
                 category_30late.SelectedItem = row.Cells[10].Value.ToString();
 
             }
+        }
+
+        private void category_delete_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
