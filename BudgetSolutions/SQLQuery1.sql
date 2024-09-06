@@ -35,5 +35,8 @@ SELECT * FROM income
 ALTER TABLE expenses ADD
 	category VARCHAR(MAX) NULL;
 
+ALTER TABLE income ADD
+	category VARCHAR(MAX) NULL;
+
 
 

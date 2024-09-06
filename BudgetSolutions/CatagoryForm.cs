@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data;
 using System.Data.SqlClient;
 using static System.Net.Mime.MediaTypeNames;
 using System.Runtime.Serialization;
@@ -141,6 +140,7 @@ namespace BudgetSolutions
                                 SqlCommand cmd = new SqlCommand("AddAndUpdateIncome", conn);
                                 cmd.CommandType = CommandType.StoredProcedure;
 
+                                cmd.Parameters.AddWithValue("@category_category", category_category.SelectedItem);
                                 cmd.Parameters.AddWithValue("@category_type", category_type.SelectedItem);
                                 cmd.Parameters.AddWithValue("@category_name", category_name.Text);
                                 cmd.Parameters.AddWithValue("@category_datepicker", category_datepicker.Value.Date);
@@ -242,8 +242,48 @@ namespace BudgetSolutions
                     }
                 }
             }
+
             displayExpenseData();
             displayIncomeData();
+        }
+
+        private int getID;
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+
+                getID = Convert.ToInt32(row.Cells[0].Value);
+                category_category.SelectedItem = row.Cells[1].Value;
+                category_type2.SelectedItem = row.Cells[2].Value;
+                category_name.Text = row.Cells[3].Value.ToString();
+                category_amount.Text = row.Cells[5].Value.ToString();
+                category_grace.SelectedItem = row.Cells[6].Value;
+                category_latefee.Text = row.Cells[7].Value.ToString();
+                category_passeddue.SelectedItem = row.Cells[8].Value;
+                category_howmuch.Text = row.Cells[9].Value.ToString();
+                category_30late.SelectedItem = row.Cells[10].Value;
+
+                category_type2_SelectedIndexChanged(sender, e);
+                category_passeddue_SelectedIndexChanged(sender, e);
+            }
+        }
+
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                DataGridViewRow row = dataGridView2.Rows[e.RowIndex];
+
+                getID = Convert.ToInt32(row.Cells[0].Value);
+                category_category.SelectedItem = row.Cells[1].Value;
+                category_type.SelectedItem = row.Cells[2].Value.ToString();
+                category_name.Text = row.Cells[3].Value.ToString();
+                category_amount.Text = row.Cells[5].Value.ToString();
+
+                category_type_SelectedIndexChanged(sender, e);
+            }
         }
 
         private void category_type2_SelectedIndexChanged(object sender, EventArgs e)
@@ -325,28 +365,7 @@ namespace BudgetSolutions
                 //date 
             }
         }
-        private int getID = 0;
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
         
-            if (e.RowIndex != -1)
-            {
-                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-
-                getID = Convert.ToInt32(row.Cells[0].Value);
-                category_category.SelectedItem = row.Cells[1].Value;
-                category_type2.SelectedItem = row.Cells[2].Value.ToString();
-                category_name.Text = row.Cells[3].Value.ToString();
-                category_amount.Text = row.Cells[5].Value.ToString();
-                category_grace.SelectedItem = row.Cells[6].Value.ToString();
-                category_latefee.Text = row.Cells[7].Value.ToString();
-                category_passeddue.SelectedItem = row.Cells[8].Value.ToString();
-                category_howmuch.Text = row.Cells[9].Value.ToString();
-                category_30late.SelectedItem = row.Cells[10].Value.ToString();
-
-            }
-        }
 
         private void category_delete_Click(object sender, EventArgs e)
         {

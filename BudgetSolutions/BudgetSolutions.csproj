@@ -121,6 +121,7 @@
   <ItemGroup>
     <Content Include="Assets\icons8-money-bag-48.png" />
     <Content Include="Assets\icons8-money-bag-96.png" />
+    <Content Include="SQLQuery1.sql" />
     <None Include="Resources\icons8-money-bag-48.png" />
     <None Include="Resources\icons8-money-bag-96.png" />
   </ItemGroup>

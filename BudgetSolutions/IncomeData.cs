@@ -12,6 +12,7 @@ namespace BudgetSolutions
         string stringConnection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\cynth\Documents\expense.mdf;Integrated Security=True;Connect Timeout=30";
 
         public int ID { get; set; }
+        public string Category { get; set; }
         public string Type { get; set; }
         public string NickName { get; set; }
         public string DepositDate { get; set; }
@@ -35,6 +36,7 @@ namespace BudgetSolutions
                     {
                         IncomeData iData = new IncomeData();
                         iData.ID = (int)iReader["ID"];
+                        iData.Category = iReader["category"].ToString();
                         iData.Type = iReader["Type"].ToString();
                         iData.NickName = iReader["name"].ToString();
                         iData.DepositDate = iReader["date"].ToString();
