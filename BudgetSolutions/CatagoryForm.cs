@@ -148,7 +148,9 @@ namespace BudgetSolutions
 
                                 cmd.ExecuteNonQuery();
 
-                                MessageBox.Show("Income added successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Income added/updated successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                clearFields();
 
                                 conn.Close();
                             }
@@ -176,30 +178,32 @@ namespace BudgetSolutions
                     {
                         if (category_passeddue.SelectedIndex == 0)
                         {
-                            using (SqlConnection conn = new SqlConnection(stringConnection))
-                            {
-                                conn.Open();
+                            SqlConnection conn = new SqlConnection(stringConnection);
+                            
+                            conn.Open();
 
-                                SqlCommand cmd = new SqlCommand("AddAndUpdateExpense", conn);
-                                cmd.CommandType = CommandType.StoredProcedure;
+                            SqlCommand cmd = new SqlCommand("AddAndUpdateExpense", conn);
+                            cmd.CommandType = CommandType.StoredProcedure;
 
-                                cmd.Parameters.AddWithValue("@category_category", category_category.SelectedItem);
-                                cmd.Parameters.AddWithValue("@category_type2", category_type2.SelectedItem);
-                                cmd.Parameters.AddWithValue("@category_name", category_name.Text);
-                                cmd.Parameters.AddWithValue("@category_datepicker", category_datepicker.Value.Date);
-                                cmd.Parameters.AddWithValue("@category_amount", userInputAmount);
-                                cmd.Parameters.AddWithValue("@category_grace", category_grace.SelectedItem);
-                                cmd.Parameters.AddWithValue("@category_latefee", userInputLate);
-                                cmd.Parameters.AddWithValue("@category_passeddue", category_passeddue.SelectedItem);
-                                cmd.Parameters.AddWithValue("@category_howmuch", userInputDue);
-                                cmd.Parameters.AddWithValue("@category_30late", category_30late.SelectedItem);
+                            cmd.Parameters.AddWithValue("@category_category", category_category.SelectedItem);
+                            cmd.Parameters.AddWithValue("@category_type2", category_type2.SelectedItem);
+                            cmd.Parameters.AddWithValue("@category_name", category_name.Text);
+                            cmd.Parameters.AddWithValue("@category_datepicker", category_datepicker.Value.Date);
+                            cmd.Parameters.AddWithValue("@category_amount", userInputAmount);
+                            cmd.Parameters.AddWithValue("@category_grace", category_grace.SelectedItem);
+                            cmd.Parameters.AddWithValue("@category_latefee", userInputLate);
+                            cmd.Parameters.AddWithValue("@category_passeddue", category_passeddue.SelectedItem);
+                            cmd.Parameters.AddWithValue("@category_howmuch", userInputDue);
+                            cmd.Parameters.AddWithValue("@category_30late", category_30late.SelectedItem);
 
-                                cmd.ExecuteNonQuery();
+                            cmd.ExecuteNonQuery();
 
-                                MessageBox.Show("Expense Added Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Expense Added/Updated Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                                conn.Close();
-                            }
+                            clearFields();
+
+                            conn.Close();
+                            
                         }
                         else
                         {
@@ -214,29 +218,31 @@ namespace BudgetSolutions
                             }
                             else
                             {
-                                using (SqlConnection conn = new SqlConnection(stringConnection))
-                                {
-                                    conn.Open();
+                                SqlConnection conn = new SqlConnection(stringConnection);
+                                
+                                conn.Open();
 
-                                    SqlCommand cmd = new SqlCommand("AddAndUpdateExpense", conn);
+                                SqlCommand cmd = new SqlCommand("AddAndUpdateExpense", conn);
 
-                                    cmd.CommandType = CommandType.StoredProcedure;
+                                cmd.CommandType = CommandType.StoredProcedure;
 
-                                    cmd.Parameters.AddWithValue("@category_category", category_category.SelectedItem);
-                                    cmd.Parameters.AddWithValue("@category_type2", category_type2.SelectedItem);
-                                    cmd.Parameters.AddWithValue("@category_name", category_name.Text);
-                                    cmd.Parameters.AddWithValue("@category_datepicker", category_datepicker.Value.Date);
-                                    cmd.Parameters.AddWithValue("@category_amount", userInputAmount);
-                                    cmd.Parameters.AddWithValue("@category_grace", category_grace.SelectedItem);
-                                    cmd.Parameters.AddWithValue("@category_latefee", userInputLate);
-                                    cmd.Parameters.AddWithValue("@category_passeddue", category_passeddue.SelectedItem);
+                                cmd.Parameters.AddWithValue("@category_category", category_category.SelectedItem);
+                                cmd.Parameters.AddWithValue("@category_type2", category_type2.SelectedItem);
+                                cmd.Parameters.AddWithValue("@category_name", category_name.Text);
+                                cmd.Parameters.AddWithValue("@category_datepicker", category_datepicker.Value.Date);
+                                cmd.Parameters.AddWithValue("@category_amount", userInputAmount);
+                                cmd.Parameters.AddWithValue("@category_grace", category_grace.SelectedItem);
+                                cmd.Parameters.AddWithValue("@category_latefee", userInputLate);
+                                cmd.Parameters.AddWithValue("@category_passeddue", category_passeddue.SelectedItem);
 
-                                    cmd.ExecuteNonQuery();
+                                cmd.ExecuteNonQuery();
 
-                                    MessageBox.Show("Expense Added/Updated Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Expense Added/Updated Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                                    conn.Close();
-                                }
+                                clearFields();
+
+                                conn.Close();
+                                
                             }
                         }
                     }
@@ -365,11 +371,96 @@ namespace BudgetSolutions
                 //date 
             }
         }
-        
 
+        public void clearFields()
+        {
+            category_category.SelectedIndex = -1;
+            category_type.SelectedIndex = -1;
+            category_type2.SelectedIndex = -1;
+            category_name.Text = "";
+            category_datepicker.Text = "";
+            category_amount.Text = "";
+            category_grace.SelectedIndex = -1;
+            category_latefee.Text = "";
+            category_passeddue.SelectedIndex = -1;
+            category_howmuch.Text = "";
+            category_30late.SelectedIndex = -1;
+
+        }
+        private void category_clear_Click(object sender, EventArgs e)
+        {
+            clearFields();
+        }
         private void category_delete_Click(object sender, EventArgs e)
         {
 
+
+            if (category_category.SelectedIndex == 0)
+            {
+
+
+                if (MessageBox.Show("Are you sure you want to delete this item?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                == DialogResult.Yes)
+                {
+                    SqlConnection conn = new SqlConnection(stringConnection);
+
+                    conn.Open();
+
+                    string deleteDataIncome = "DELETE FROM income WHERE id = @category_name";
+
+
+                    SqlCommand cmd = new SqlCommand(deleteDataIncome, conn);
+
+
+
+                    cmd.Parameters.AddWithValue("@id", getID);
+
+
+                    cmd.ExecuteNonQuery();
+
+
+                    MessageBox.Show("Item Deleted Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    clearFields();
+
+                    conn.Close();
+                }
+            }
+            else if(category_category.SelectedIndex ==  1)
+            {
+
+
+                if (MessageBox.Show("Are you sure you want to delete this item?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                == DialogResult.Yes)
+                {
+                    SqlConnection conn = new SqlConnection(stringConnection);
+
+                    conn.Open();
+
+                    string deleteDataExpenses = "DELETE FROM expenses WHERE id = @id";
+
+
+                    SqlCommand cmd = new SqlCommand(deleteDataExpenses, conn);
+
+
+
+                    cmd.Parameters.AddWithValue("@id", getID);
+
+
+                    cmd.ExecuteNonQuery();
+
+
+                    MessageBox.Show("Item Deleted Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    clearFields();
+
+                    conn.Close();
+                }
+            }
+            displayExpenseData();
+
+            displayIncomeData();
         }
+        
     }
 }

@@ -473,6 +473,7 @@
             this.category_clear.TabIndex = 5;
             this.category_clear.Text = "CLEAR ALL";
             this.category_clear.UseVisualStyleBackColor = false;
+            this.category_clear.Click += new System.EventHandler(this.category_clear_Click);
             // 
             // category_typeLabel
             // 
