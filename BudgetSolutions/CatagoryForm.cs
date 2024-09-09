@@ -55,6 +55,7 @@ namespace BudgetSolutions
                 category_amountlabel.Visible = false;
                 category_amount.Visible = false;
                 category_duedatelabel.Visible = false;
+                category_depositLabel.Visible = false;
                 category_datepicker.Visible = false;
                 category_datepicker.Enabled = false;
                 category_gracelabel.Visible = false;
@@ -99,10 +100,10 @@ namespace BudgetSolutions
             {
                 MessageBox.Show("Please fill out all fields", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (category_category.SelectedIndex == 1 && category_type2.SelectedIndex < 0 || category_category.SelectedIndex == 1 && category_name.Text == "" ||
+            else if (category_category.SelectedIndex == 1 && category_type2.SelectedIndex  < 0 || category_category.SelectedIndex == 1 && category_name.Text == "" ||
                 category_category.SelectedIndex == 1 && category_amount.Text == "" || category_category.SelectedIndex == 1 && category_datepicker.Checked == false ||
-                category_category.SelectedIndex == 1 && category_grace.SelectedIndex < 0 || category_category.SelectedIndex == 1 && category_latefee.Text == "" ||
-                category_category.SelectedIndex == 1 && category_passeddue.SelectedIndex < 0)
+                category_category.SelectedIndex == 1 && category_grace.SelectedIndex < 0 && category_type2.SelectedIndex <= 11|| category_category.SelectedIndex == 1 && category_latefee.Text == "" && category_type2.SelectedIndex <= 11 ||
+                category_category.SelectedIndex == 1 && category_passeddue.SelectedIndex < 0 && category_type2.SelectedIndex <= 11)
             {
                 MessageBox.Show("Please fill out all fields", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -115,6 +116,11 @@ namespace BudgetSolutions
             {
                 MessageBox.Show("Please fill out all fields", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            //else if (category_category.SelectedIndex == 1 && category_type2.SelectedIndex > 11 || category_category.SelectedIndex == 1 && category_name.Text == "" ||
+            //    category_category.SelectedIndex == 1 && category_amount.Text == "" || category_category.SelectedIndex == 1 && category_datepicker.Checked == false )
+            //{
+            //    MessageBox.Show("Please fill out all fields", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
             else
             {
 
@@ -158,7 +164,7 @@ namespace BudgetSolutions
                     }
                 }
 
-                if (category_category.SelectedIndex == 1)
+                if (category_category.SelectedIndex == 1 && category_type2.SelectedIndex <= 11)
                 {
                     if (!decimal.TryParse(category_amount.Text, out userInputAmount))
                     {
@@ -176,7 +182,7 @@ namespace BudgetSolutions
                     else if (MessageBox.Show("Are you sure you want to add/update this item?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                          == DialogResult.Yes)
                     {
-                        if (category_passeddue.SelectedIndex == 0)
+                        if (category_passeddue.SelectedIndex == 0 && category_type2.SelectedIndex <= 11)
                         {
                             SqlConnection conn = new SqlConnection(stringConnection);
                             
@@ -205,7 +211,7 @@ namespace BudgetSolutions
                             conn.Close();
                             
                         }
-                        else
+                        else if (category_passeddue.SelectedIndex == 1 && category_type2.SelectedIndex <= 11)
                         {
                             if (!decimal.TryParse(category_amount.Text, out userInputAmount))
                             {
@@ -216,8 +222,12 @@ namespace BudgetSolutions
                             {
                                 MessageBox.Show("Please enter amount in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
+                            
                             else
                             {
+                                decimal userInputDue1 = 0;
+                                var userInput30 = category_30late.SelectedIndex == 0;
+
                                 SqlConnection conn = new SqlConnection(stringConnection);
                                 
                                 conn.Open();
@@ -234,6 +244,8 @@ namespace BudgetSolutions
                                 cmd.Parameters.AddWithValue("@category_grace", category_grace.SelectedItem);
                                 cmd.Parameters.AddWithValue("@category_latefee", userInputLate);
                                 cmd.Parameters.AddWithValue("@category_passeddue", category_passeddue.SelectedItem);
+                                cmd.Parameters.AddWithValue("@category_howmuch", userInputDue1);
+                                cmd.Parameters.AddWithValue("@category_30late", category_30late.SelectedIndex == -1);
 
                                 cmd.ExecuteNonQuery();
 
@@ -244,7 +256,49 @@ namespace BudgetSolutions
                                 conn.Close();
                                 
                             }
+
                         }
+                    }
+                }
+                else if (category_category.SelectedIndex == 1 && category_type2.SelectedIndex > 11)
+                {
+                    if (!decimal.TryParse(category_amount.Text, out userInputAmount))
+                    {
+                        MessageBox.Show("Please enter amount in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+                    else if (MessageBox.Show("Are you sure you want to add/update this item?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                         == DialogResult.Yes)
+                    {
+                        decimal nullAmountDue1 = 0;
+                        decimal nullLateFee = 0;
+
+                        SqlConnection conn = new SqlConnection(stringConnection);
+
+                        conn.Open();
+
+                        SqlCommand cmd = new SqlCommand("AddAndUpdateExpense", conn);
+
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@category_category", category_category.SelectedItem);
+                        cmd.Parameters.AddWithValue("@category_type2", category_type2.SelectedItem);
+                        cmd.Parameters.AddWithValue("@category_name", category_name.Text);
+                        cmd.Parameters.AddWithValue("@category_datepicker", category_datepicker.Value.Date);
+                        cmd.Parameters.AddWithValue("@category_amount", userInputAmount);
+                        cmd.Parameters.AddWithValue("@category_grace", category_grace.SelectedIndex == -1);
+                        cmd.Parameters.AddWithValue("@category_latefee", nullLateFee);
+                        cmd.Parameters.AddWithValue("@category_passeddue", category_passeddue.SelectedIndex == -1);
+                        cmd.Parameters.AddWithValue("@category_howmuch", nullAmountDue1);
+                        cmd.Parameters.AddWithValue("@category_30late", category_30late.SelectedIndex == -1);
+
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("Expense Added/Updated Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        clearFields();
+
+                        conn.Close();
                     }
                 }
             }
@@ -320,21 +374,34 @@ namespace BudgetSolutions
                 category_name.Visible = true;
                 category_amountlabel.Visible = true;
                 category_amount.Visible = true;
-                category_duedatelabel.Visible = false;
-                category_datepicker.Visible = false;
+
+                category_duedatelabel.Visible = true;
+                category_datepicker.Visible = true;
+                category_datepicker.Enabled = true;
+
                 category_gracelabel.Visible = false;
                 category_grace.Visible = false;
+                category_grace.SelectedIndex = 0;
+
+                category_latefee.Text = "";
                 category_latefeelabel.Visible = false;
                 category_latefee.Visible = false;
+
                 category_passedlabel.Visible = false;
                 category_passeddue.Visible = false;
+                category_passeddue.SelectedIndex = 1;
+
                 category_howmuchlabel.Visible = false;
                 category_howmuch.Visible = false;
+                category_howmuch.Text = "";
+
                 category_30latelabel.Visible = false;
                 category_30late.Visible = false;
-                category_passeddue.SelectedIndex = 1;
-                category_grace.SelectedIndex = 0;
-                category_datepicker.Enabled = false;
+                category_30late.SelectedIndex = 0;
+                
+                
+                
+                
             }
         }
 
@@ -365,10 +432,13 @@ namespace BudgetSolutions
                 category_amountlabel.Visible = true;
                 category_amount.Visible = true;
                 category_depositLabel.Visible = true;
+                category_duedatelabel.Visible = false;
                 category_datepicker.Visible = true;
                 category_datepicker.Enabled = true;
-                //amount
-                //date 
+                category_howmuchlabel.Visible = false;
+                category_howmuch.Visible = false;
+                category_30latelabel.Visible = false;
+                category_30late.Visible = false;
             }
         }
 
@@ -406,7 +476,7 @@ namespace BudgetSolutions
 
                     conn.Open();
 
-                    string deleteDataIncome = "DELETE FROM income WHERE id = @category_name";
+                    string deleteDataIncome = "DELETE FROM income WHERE id = @id";
 
 
                     SqlCommand cmd = new SqlCommand(deleteDataIncome, conn);
