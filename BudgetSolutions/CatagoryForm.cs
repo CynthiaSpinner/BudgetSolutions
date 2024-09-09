@@ -17,7 +17,13 @@ namespace BudgetSolutions
     
     public partial class CatagoryForm : UserControl
     {
+
+        //my connection to SQL formatted file for local database storage
+
         string stringConnection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\cynth\Documents\expense.mdf;Integrated Security=True;Connect Timeout=30";
+
+        //methods called and initializing form to run functionality for form page
+
         public CatagoryForm()
         {
             InitializeComponent();
@@ -26,6 +32,8 @@ namespace BudgetSolutions
 
             displayIncomeData();
         }
+
+        //displaying data in grid view format by calling lists
 
         public void displayExpenseData()
         {
@@ -42,6 +50,8 @@ namespace BudgetSolutions
 
             dataGridView2.DataSource = listIncome;
         }
+
+        //functionality of drop down menus
 
         private void category_category_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -85,13 +95,105 @@ namespace BudgetSolutions
             }
         }
 
+        private void category_type2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (category_type2.SelectedIndex <= 11)
+            {
+                category_namelabel.Visible = true;
+                category_name.Visible = true;
+                category_amountlabel.Visible = true;
+                category_amount.Visible = true;
+                category_duedatelabel.Visible = true;
+                category_datepicker.Visible = true;
+                category_datepicker.Enabled = true;
+                category_gracelabel.Visible = true;
+                category_grace.Visible = true;
+                category_latefeelabel.Visible = true;
+                category_latefee.Visible = true;
+                category_passedlabel.Visible = true;
+                category_passeddue.Visible = true;
+                category_howmuchlabel.Visible = false;
+                category_howmuch.Visible = false;
+                category_30latelabel.Visible = false;
+                category_30late.Visible = false;
+            }
+            else if (category_type2.SelectedIndex > 11)
+            {
+                category_namelabel.Visible = true;
+                category_name.Visible = true;
+                category_amountlabel.Visible = true;
+                category_amount.Visible = true;
+
+                category_duedatelabel.Visible = true;
+                category_datepicker.Visible = true;
+                category_datepicker.Enabled = true;
+
+                category_gracelabel.Visible = false;
+                category_grace.Visible = false;
+                category_grace.SelectedIndex = 0;
+
+                category_latefee.Text = "";
+                category_latefeelabel.Visible = false;
+                category_latefee.Visible = false;
+
+                category_passedlabel.Visible = false;
+                category_passeddue.Visible = false;
+                category_passeddue.SelectedIndex = 1;
+
+                category_howmuchlabel.Visible = false;
+                category_howmuch.Visible = false;
+                category_howmuch.Text = "";
+
+                category_30latelabel.Visible = false;
+                category_30late.Visible = false;
+                category_30late.SelectedIndex = 0;
+            }
+        }
+
+        private void category_passeddue_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (category_passeddue.SelectedIndex == 0)
+            {
+                category_howmuchlabel.Visible = true;
+                category_howmuch.Visible = true;
+                category_30latelabel.Visible = true;
+                category_30late.Visible = true;
+            }
+            else
+            {
+                category_howmuchlabel.Visible = false;
+                category_howmuch.Visible = false;
+                category_30latelabel.Visible = false;
+                category_30late.Visible = false;
+            }
+        }
+
+        private void category_type_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (category_type.SelectedIndex >= 0)
+            {
+                category_namelabel.Visible = true;
+                category_name.Visible = true;
+                category_amountlabel.Visible = true;
+                category_amount.Visible = true;
+                category_depositLabel.Visible = true;
+                category_duedatelabel.Visible = false;
+                category_datepicker.Visible = true;
+                category_datepicker.Enabled = true;
+                category_howmuchlabel.Visible = false;
+                category_howmuch.Visible = false;
+                category_30latelabel.Visible = false;
+                category_30late.Visible = false;
+            }
+        }
+
+        //null checking dropdowns and input fields
+
         private void category_addUpdate_Click(object sender, EventArgs e)
         {
             decimal userInputAmount;
             decimal userInputLate;
             decimal userInputDue;
-
-
 
             if (category_category.SelectedIndex < 0 && category_type2.SelectedIndex < 0 || category_category.SelectedIndex < 0 && category_name.Text == "" ||
                 category_category.SelectedIndex < 0 && category_amount.Text == "" || category_category.SelectedIndex < 0 && category_datepicker.Checked == false ||
@@ -116,15 +218,10 @@ namespace BudgetSolutions
             {
                 MessageBox.Show("Please fill out all fields", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            //else if (category_category.SelectedIndex == 1 && category_type2.SelectedIndex > 11 || category_category.SelectedIndex == 1 && category_name.Text == "" ||
-            //    category_category.SelectedIndex == 1 && category_amount.Text == "" || category_category.SelectedIndex == 1 && category_datepicker.Checked == false )
-            //{
-            //    MessageBox.Show("Please fill out all fields", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
             else
             {
 
-
+            //establishing database connection and parsing of numerical input data to decimal. checking for correct decimal format and confirmation from user to continue to reduce user error
 
                 if (category_category.SelectedIndex == 0)
                 {
@@ -141,6 +238,10 @@ namespace BudgetSolutions
                             if (MessageBox.Show("Are you sure you want to add/update this item?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                             == DialogResult.Yes)
                             {
+
+            //opening database connection, collecting user data, using stored procedure to check against data do minimize duplicates, and sending data to be saved in proper format in database
+            //**** going to impliment a merge into the stored procedure instead of using insert, for better updating of ID automatic incrementation *****
+
                                 conn.Open();
 
                                 SqlCommand cmd = new SqlCommand("AddAndUpdateIncome", conn);
@@ -151,12 +252,18 @@ namespace BudgetSolutions
                                 cmd.Parameters.AddWithValue("@category_name", category_name.Text);
                                 cmd.Parameters.AddWithValue("@category_datepicker", category_datepicker.Value.Date);
                                 cmd.Parameters.AddWithValue("@category_amount", userIncomeInput);
-
+            
                                 cmd.ExecuteNonQuery();
+
+            //properly stored message box shows confirmation of add or update ***going to impliment a message box for NOT added or updated successfully***
 
                                 MessageBox.Show("Income added/updated successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+            //calling clear fields method to refresh form fields
+
                                 clearFields();
+
+            //closing connection
 
                                 conn.Close();
                             }
@@ -303,9 +410,13 @@ namespace BudgetSolutions
                 }
             }
 
+        // calling display methods to refresh data grid display. User can see data updates in "real time" lol
+
             displayExpenseData();
             displayIncomeData();
         }
+
+        // selection of rows within data grid and sending information to auto fill form fields
 
         private int getID;
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -345,102 +456,8 @@ namespace BudgetSolutions
                 category_type_SelectedIndexChanged(sender, e);
             }
         }
-
-        private void category_type2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if( category_type2.SelectedIndex <= 11) 
-            {
-                category_namelabel.Visible = true;
-                category_name.Visible = true;
-                category_amountlabel.Visible = true;
-                category_amount.Visible = true;
-                category_duedatelabel.Visible = true;
-                category_datepicker.Visible = true;
-                category_datepicker.Enabled = true;
-                category_gracelabel.Visible = true;
-                category_grace.Visible = true;
-                category_latefeelabel.Visible = true;
-                category_latefee.Visible = true;
-                category_passedlabel.Visible = true;
-                category_passeddue.Visible = true;
-                category_howmuchlabel.Visible = false;
-                category_howmuch.Visible = false;
-                category_30latelabel.Visible = false;
-                category_30late.Visible = false;
-            }
-            else if(category_type2.SelectedIndex > 11)
-            {
-                category_namelabel.Visible = true;
-                category_name.Visible = true;
-                category_amountlabel.Visible = true;
-                category_amount.Visible = true;
-
-                category_duedatelabel.Visible = true;
-                category_datepicker.Visible = true;
-                category_datepicker.Enabled = true;
-
-                category_gracelabel.Visible = false;
-                category_grace.Visible = false;
-                category_grace.SelectedIndex = 0;
-
-                category_latefee.Text = "";
-                category_latefeelabel.Visible = false;
-                category_latefee.Visible = false;
-
-                category_passedlabel.Visible = false;
-                category_passeddue.Visible = false;
-                category_passeddue.SelectedIndex = 1;
-
-                category_howmuchlabel.Visible = false;
-                category_howmuch.Visible = false;
-                category_howmuch.Text = "";
-
-                category_30latelabel.Visible = false;
-                category_30late.Visible = false;
-                category_30late.SelectedIndex = 0;
-                
-                
-                
-                
-            }
-        }
-
-        private void category_passeddue_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(category_passeddue.SelectedIndex == 0) 
-            {
-                category_howmuchlabel.Visible = true;
-                category_howmuch.Visible = true;
-                category_30latelabel.Visible = true;
-                category_30late.Visible = true;
-            }
-            else
-            {
-                category_howmuchlabel.Visible = false;
-                category_howmuch.Visible = false;
-                category_30latelabel.Visible = false;
-                category_30late.Visible = false;
-            }
-        }
-
-        private void category_type_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (category_type.SelectedIndex >= 0)
-            {
-                category_namelabel.Visible = true;
-                category_name.Visible = true;
-                category_amountlabel.Visible = true;
-                category_amount.Visible = true;
-                category_depositLabel.Visible = true;
-                category_duedatelabel.Visible = false;
-                category_datepicker.Visible = true;
-                category_datepicker.Enabled = true;
-                category_howmuchlabel.Visible = false;
-                category_howmuch.Visible = false;
-                category_30latelabel.Visible = false;
-                category_30late.Visible = false;
-            }
-        }
+        
+        //clear all fields method
 
         public void clearFields()
         {
@@ -457,10 +474,16 @@ namespace BudgetSolutions
             category_30late.SelectedIndex = -1;
 
         }
+
+        //calling clear fields method on clear fields button click
+
         private void category_clear_Click(object sender, EventArgs e)
         {
             clearFields();
         }
+
+        //on selected row selection, delete row on click of delete button
+
         private void category_delete_Click(object sender, EventArgs e)
         {
 
@@ -527,6 +550,9 @@ namespace BudgetSolutions
                     conn.Close();
                 }
             }
+
+        //again "real time" updates
+
             displayExpenseData();
 
             displayIncomeData();
