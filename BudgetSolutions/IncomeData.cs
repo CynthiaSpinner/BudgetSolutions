@@ -39,7 +39,7 @@ namespace BudgetSolutions
                         iData.Category = iReader["category"].ToString();
                         iData.Type = iReader["Type"].ToString();
                         iData.NickName = iReader["name"].ToString();
-                        iData.DepositDate = iReader["date"].ToString();
+                        iData.DepositDate = ((DateTime)iReader["date"]).ToString("MM-dd-yyyy");
                         iData.Amount = iReader["amount"].ToString();
                         
 

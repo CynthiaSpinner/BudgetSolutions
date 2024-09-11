@@ -46,7 +46,7 @@ namespace BudgetSolutions
                         eData.Category = eReader["category"].ToString(); //1
                         eData.Type = eReader["Type"].ToString(); //2
                         eData.NickName = eReader["name"].ToString(); //3
-                        eData.DueDate = eReader["date"].ToString(); //4
+                        eData.DueDate = ((DateTime)eReader["date"]).ToString("MM-dd-yyyy"); //4
                         eData.Amount = eReader["amount"].ToString(); //5
                         eData.Grace = eReader["grace"].ToString(); //6
                         eData.LateFee = eReader["lateFee"].ToString(); //7

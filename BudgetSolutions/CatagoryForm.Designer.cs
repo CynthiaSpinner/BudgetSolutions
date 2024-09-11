@@ -552,7 +552,7 @@
             this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView2.EnableHeadersVisualStyles = false;
             this.dataGridView2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(124)))), ((int)(((byte)(128)))));
-            this.dataGridView2.Location = new System.Drawing.Point(312, 753);
+            this.dataGridView2.Location = new System.Drawing.Point(225, 760);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
@@ -568,7 +568,7 @@
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowHeadersWidth = 72;
             this.dataGridView2.RowTemplate.Height = 31;
-            this.dataGridView2.Size = new System.Drawing.Size(779, 207);
+            this.dataGridView2.Size = new System.Drawing.Size(943, 294);
             this.dataGridView2.TabIndex = 3;
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             // 
@@ -615,7 +615,7 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 72;
             this.dataGridView1.RowTemplate.Height = 31;
-            this.dataGridView1.Size = new System.Drawing.Size(1320, 449);
+            this.dataGridView1.Size = new System.Drawing.Size(1320, 540);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 

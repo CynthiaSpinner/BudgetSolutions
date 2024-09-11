@@ -39,5 +39,7 @@ namespace BudgetSolutions
                 this.Hide();
             }
         }
+
+       
     }
 }

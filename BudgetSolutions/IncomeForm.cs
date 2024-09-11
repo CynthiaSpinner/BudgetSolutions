@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace BudgetSolutions
 {
-    public partial class DashboardForm : UserControl
+    public partial class IncomeForm : UserControl
     {
-        public DashboardForm()
+        public IncomeForm()
         {
             InitializeComponent();
-        }
-
-        private void label17_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
