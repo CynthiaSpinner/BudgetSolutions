@@ -4,12 +4,13 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace BudgetSolutions
 {
     class IncomeData
     {
-        string stringConnection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\cynth\Documents\expense.mdf;Integrated Security=True;Connect Timeout=30";
+        string stringConnection = ConfigurationManager.ConnectionStrings["BudgetDB"].ConnectionString;
 
         public int ID { get; set; }
         public string Category { get; set; }

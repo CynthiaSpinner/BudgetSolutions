@@ -199,6 +199,7 @@
             // incomeForm1
             // 
             this.incomeForm1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.incomeForm1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.incomeForm1.Location = new System.Drawing.Point(402, 118);
             this.incomeForm1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.incomeForm1.Name = "incomeForm1";
@@ -208,6 +209,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Location = new System.Drawing.Point(402, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(2081, 104);

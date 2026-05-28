@@ -8,13 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 
 
 namespace BudgetSolutions
 {
     public partial class RegisterForm : Form
     {
-        SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\cynth\Documents\expense.mdf;Integrated Security=True;Connect Timeout=30");
+        SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["BudgetDB"].ConnectionString);
         public RegisterForm()
         {
             InitializeComponent();

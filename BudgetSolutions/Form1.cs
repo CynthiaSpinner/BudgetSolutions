@@ -7,15 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data;
 using System.Data.SqlClient;
+using System.Configuration;
 
 
 namespace BudgetSolutions
 {
     public partial class Form1 : Form
     {
-        string stringConnection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\cynth\Documents\expense.mdf;Integrated Security=True;Connect Timeout=30";
+        string stringConnection = ConfigurationManager.ConnectionStrings["BudgetDB"].ConnectionString;
         public Form1()
         {
             InitializeComponent();
