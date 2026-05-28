@@ -8,9 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using static System.Net.Mime.MediaTypeNames;
-using System.Runtime.Serialization;
-using System.Xml.Linq;
+using System.Configuration;
 
 namespace BudgetSolutions
 {
@@ -20,7 +18,7 @@ namespace BudgetSolutions
 
         //my connection to SQL formatted file for local database storage
 
-        string stringConnection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\cynth\Documents\expense.mdf;Integrated Security=True;Connect Timeout=30";
+        string stringConnection = ConfigurationManager.ConnectionStrings["BudgetDB"].ConnectionString;
 
         //methods called and initializing form to run functionality for form page
 
