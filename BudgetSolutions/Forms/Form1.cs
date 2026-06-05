@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Configuration;
 
 
@@ -15,7 +15,7 @@ namespace BudgetSolutions
 {
     public partial class Form1 : Form
     {
-        string stringConnection = ConfigurationManager.ConnectionStrings["BudgetDB"].ConnectionString;
+        string stringConnection = Program.ConnectionString;
         public Form1()
         {
             InitializeComponent();
@@ -51,8 +51,8 @@ namespace BudgetSolutions
 
                 using(SqlCommand cmd = new SqlCommand(selectInfo, conn))
                 {
-                    cmd.Parameters.AddWithValue(@"username", login_username.Text.Trim());
-                    cmd.Parameters.AddWithValue(@"Password", login_password.Text.Trim());
+                    cmd.Parameters.AddWithValue("@username", login_username.Text.Trim());
+                    cmd.Parameters.AddWithValue("@password", login_password.Text.Trim());
 
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     DataTable table = new DataTable();

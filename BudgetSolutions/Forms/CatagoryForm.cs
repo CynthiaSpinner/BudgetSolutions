@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-using System.Configuration;
+using Microsoft.Data.SqlClient;
+using System.Globalization;
 
 namespace BudgetSolutions
 {
@@ -18,17 +18,23 @@ namespace BudgetSolutions
 
         //my connection to SQL formatted file for local database storage
 
-        string stringConnection = ConfigurationManager.ConnectionStrings["BudgetDB"].ConnectionString;
+        string stringConnection = Program.ConnectionString;
 
         //methods called and initializing form to run functionality for form page
 
         public CatagoryForm()
         {
             InitializeComponent();
+            this.Load += CatagoryForm_Load;
+        }
 
-            displayExpenseData();
-
-            displayIncomeData();
+        private void CatagoryForm_Load(object sender, EventArgs e)
+        {
+            if (!this.DesignMode && Program.ConnectionString != null)
+            {
+                displayExpenseData();
+                displayIncomeData();
+            }
         }
 
         //displaying data in grid view format by calling lists
@@ -189,9 +195,9 @@ namespace BudgetSolutions
 
         private void category_addUpdate_Click(object sender, EventArgs e)
         {
-            decimal userInputAmount;
-            decimal userInputLate;
-            decimal userInputDue;
+            decimal userInputAmount = 0;
+            decimal userInputLate = 0;
+            decimal userInputDue = 0;
 
             if (category_category.SelectedIndex < 0 && category_type2.SelectedIndex < 0 || category_category.SelectedIndex < 0 && category_name.Text == "" ||
                 category_category.SelectedIndex < 0 && category_amount.Text == "" || category_category.SelectedIndex < 0 && category_datepicker.Checked == false ||
@@ -227,7 +233,7 @@ namespace BudgetSolutions
                     {
                         decimal userIncomeInput;
 
-                        if (!decimal.TryParse(category_amount.Text, out userIncomeInput))
+                        if (!decimal.TryParse(category_amount.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out userIncomeInput))
                         {
                             MessageBox.Show("Please enter amount in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
@@ -271,18 +277,18 @@ namespace BudgetSolutions
 
                 if (category_category.SelectedIndex == 1 && category_type2.SelectedIndex <= 11)
                 {
-                    if (!decimal.TryParse(category_amount.Text, out userInputAmount))
+                    if (!decimal.TryParse(category_amount.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out userInputAmount))
                     {
                         MessageBox.Show("Please enter amount in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     }
-                    else if (!decimal.TryParse(category_latefee.Text, out userInputLate))
+                    else if (category_latefee.Visible && !decimal.TryParse(category_latefee.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out userInputLate))
                     {
-                        MessageBox.Show("Please enter amount in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Please enter late fee in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    else if (!decimal.TryParse(category_howmuch.Text, out userInputDue))
+                    else if (category_howmuch.Visible && !decimal.TryParse(category_howmuch.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out userInputDue))
                     {
-                        MessageBox.Show("Please enter amount in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Please enter past due amount in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else if (MessageBox.Show("Are you sure you want to add/update this item?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                          == DialogResult.Yes)
@@ -318,12 +324,12 @@ namespace BudgetSolutions
                         }
                         else if (category_passeddue.SelectedIndex == 1 && category_type2.SelectedIndex <= 11)
                         {
-                            if (!decimal.TryParse(category_amount.Text, out userInputAmount))
+                            if (!decimal.TryParse(category_amount.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out userInputAmount))
                             {
                                 MessageBox.Show("Please enter amount in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                             }
-                            else if (!decimal.TryParse(category_latefee.Text, out userInputLate))
+                            else if (!decimal.TryParse(category_latefee.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out userInputLate))
                             {
                                 MessageBox.Show("Please enter amount in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
@@ -367,7 +373,7 @@ namespace BudgetSolutions
                 }
                 else if (category_category.SelectedIndex == 1 && category_type2.SelectedIndex > 11)
                 {
-                    if (!decimal.TryParse(category_amount.Text, out userInputAmount))
+                    if (!decimal.TryParse(category_amount.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out userInputAmount))
                     {
                         MessageBox.Show("Please enter amount in decimal format ex: 90.00", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 

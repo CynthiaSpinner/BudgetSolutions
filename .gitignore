@@ -1,0 +1,28 @@
+# Build output
+bin/
+obj/
+
+# Visual Studio IDE files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Compiled output
+*.exe
+*.dll
+*.pdb
+
+# NuGet
+*.nupkg
+project.lock.json
+project.nuget.cache
+
+# Database files (contain personal financial data - never commit)
+*.mdf
+*.ldf
+
+# OS files
+Thumbs.db
+.DS_Store

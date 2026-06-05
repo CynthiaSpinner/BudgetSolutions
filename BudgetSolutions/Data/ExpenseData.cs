@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Configuration;
 
 namespace BudgetSolutions
 {
     class ExpenseData
     {
-        string stringConnection = ConfigurationManager.ConnectionStrings["BudgetDB"].ConnectionString;
+        string stringConnection = Program.ConnectionString;
 
         public int ID { get; set; }
         public string Category { get; set; }
